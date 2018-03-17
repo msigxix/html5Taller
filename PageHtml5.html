@@ -1,8 +1,11 @@
-<head>
-<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+﻿<head>
+<meta http-equiv=Content-Type content="text/html">
+    <meta charset="UTF-8">
+    
 <title>Taller Nro. 4 - Tecnologías Web</title>
+<link rel="stylesheet" type="text/css" href="style.css" /> 
+
 <script type="text/javascript">
- 
 </script>
 <style type="text/css">
 #grande{ border:1px solid black;
@@ -36,21 +39,19 @@
     } 
     body, html {height:100%; margin:0; padding:0;width:100%;}      
 </style>
+
+
 </head>
 <body>
- 
-	<div id="menu">
-		<nav>
-		<ul>
-			<li><a title="Opcion 1" href="#">Opción 1</a></li>
-		</ul>
-		</nav>
-	</div>
-	<div id="map"></div>
-    <div id="video">2</div><br>
-    <div id="cuadro1">3</div>
-    <div id="cuadro2">4</div>
-    </div>
+<nav>
+<ul>
+    <li><a title="Opcion 1" href="#">Inicio</a></li>
+    <li><a title="Opcion 2" href="#">Mapa</a></li>
+    <li><a title="Opcion 3" href="#">Audio y Video</a></li>
+    <li><a title="Opcion 4" href="#">Canvas</a></li>
+    <li><a title="Opcion 5" href="#">Estadistico</a></li>
+</ul>
+</nav>
  
  
   <script>
@@ -62,10 +63,36 @@
           center: myLatLng,
           zoom: 17
         });
-		}
-		
+		}	
    </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap"
     async defer></script>
+
+
+    <div id="map"></div>
+    <div id="video">2</div><br>
+
+
+ <div id ="cuadro1">
+  <h3>Gráfico con degradado en Canvas</h3>
+  <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+  </canvas> 
+ <script>
+   var c = document.getElementById("myCanvas");
+   var ctx = c.getContext("2d");
+   // Create gradient
+   var grd = ctx.createLinearGradient(0,0,200,0);
+   grd.addColorStop(0,"red");
+   grd.addColorStop(1,"white");
+   // Fill with gradient
+   ctx.fillStyle = grd;
+  ctx.fillRect(10,10,150,80);
+</script>
+</div>
+
+    <div id="cuadro2">4</div>
+
+
+
 </body>
 </html>
