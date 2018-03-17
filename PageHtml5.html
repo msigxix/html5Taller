@@ -1,0 +1,71 @@
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<title>Taller Nro. 4 - Tecnologías Web</title>
+<script type="text/javascript">
+ 
+</script>
+<style type="text/css">
+#grande{ border:1px solid black;
+        /* width:100%;
+         height: auto;  */     
+    }
+#menu{ border :1px solid gray;
+	width: 99%;
+	height:5%;
+	display: inline-block;
+}
+#map{ border:1px solid blue;
+      width:49.5%;
+	  height: 45%;
+      display:inline-block;     
+    }
+#video{ border:1px solid blue;
+      width:49.5%;
+	  height: 45%;
+      display:inline-block;
+    }
+#cuadro1{ border:1px solid blue;
+       width:49.5%;
+	   height: 45%;
+       display:inline-block;
+    }
+#cuadro2{ border:1px solid blue;
+    width:49.5%;
+	height: 45%;
+       display:inline-block;
+    } 
+    body, html {height:100%; margin:0; padding:0;width:100%;}      
+</style>
+</head>
+<body>
+ 
+	<div id="menu">
+		<nav>
+		<ul>
+			<li><a title="Opcion 1" href="#">Opción 1</a></li>
+		</ul>
+		</nav>
+	</div>
+	<div id="map"></div>
+    <div id="video">2</div><br>
+    <div id="cuadro1">3</div>
+    <div id="cuadro2">4</div>
+    </div>
+ 
+ 
+  <script>
+      var map;
+	 
+      function initMap() {
+	    var myLatLng = {lat: -2.1843405, lng: -79.8770334 };
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          zoom: 17
+        });
+		}
+		
+   </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap"
+    async defer></script>
+</body>
+</html>
