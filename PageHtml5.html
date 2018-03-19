@@ -87,8 +87,34 @@
                 };
                 map = new google.maps.Map(document.getElementById('map'), {
                     center: myLatLng,
-                    zoom: 16
+                    zoom: 14
                 });
+				
+				var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
+				addMarker(pos1,map,"Malecon","Sitio turistico Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+				var pos2 = {lat:-2.179344,lng:-79.875692}; //posicion del marcador
+				addMarker(pos2,map,"Wyndham","Hotel Wyndham $143"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+				var pos3 = {lat:-2.183074,lng:-79.877357}; //posicion del marcador
+				addMarker(pos3,map,"Museo","Museo de los Bomberos"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+				var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
+				addMarker(pos4,map,"ESPOL","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+				function addMarker(location, map,etiq,titulo) {
+				// Add the marker at the clicked location, and add the next-available label
+				// from the array of alphabetical characters.
+				var marker = new google.maps.Marker({
+				position: location,
+				title: titulo,
+				label: etiq,
+				map: map
+				});
+				marker.addListener('click', function(){
+					alert(marker.label); // función a llamar, pasa el nomre mostrado
+				});
+				}
             }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap" async defer></script>
