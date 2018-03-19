@@ -89,6 +89,23 @@
                     center: myLatLng,
                     zoom: 16
                 });
+				
+				var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
+				addMarker(pos1,map,"Malecon","Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+				function addMarker(location, map,etiq,titulo) {
+				// Add the marker at the clicked location, and add the next-available label
+				// from the array of alphabetical characters.
+				var marker = new google.maps.Marker({
+				position: location,
+				title: titulo,
+				label: etiq,
+				map: map
+				});
+				marker.addListener('click', function(){
+					alert(marker.label); // función a llamar, pasa el nomre mostrado
+				});
+				}
             }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap" async defer></script>
