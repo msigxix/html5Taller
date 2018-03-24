@@ -4,27 +4,57 @@
 
 
 {% block content %}
+ 
+  
+ <!-- 
+ <div class="form-body form-body-info">
+	<form method="post" novalidate>
+	{% csrf_token %}
+	
+	<table>
+	                {{ form.as_table }}
+	                 <tr>
+	                    <td></td>
+	                    <td><input type="submit" name="submit" value="Register" /></td>
+	                </tr>
+	             </table> 
+	</form>
+</div>
+ 
+  -->
 
-<form method="post" novalidate>
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Enviar</button>
-</form>
 
-<div class="panel panel-widget agile-validation register-form">
-	<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
-		<div class="input-info">
-				<h3>Registro de Usuarios:</h3>
-						</div>
+<div class="main-grid">
+			<div class="agile-grids">	
+				<!-- validation -->
+				<div class="grids">
+					<div class="progressbar-heading grids-heading">
+						<h2>Regístrate o Inicia Sesión</h2>
+					</div>
+					
+					<div class="forms-grids">
+						<div class="forms3">
+						<div class="w3agile-validation w3ls-validation">
+							<div class="panel panel-widget agile-validation register-form">
+								<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
+									<div class="input-info">
+										<h3>Registro de Usuarios :</h3>
+									</div>
 									<div class="form-body form-body-info">
 										<form data-toggle="validator" action="#" method="post" novalidate="true">
 											<div class="form-group valid-form has-error">
-												<input type="text" class="form-control" id="inputName" name="Username" placeholder="Username" required="">
+												<input type="text" class="form-control" id="inputName" name="username" placeholder="usuario" required="">
+											</div>
+											<div class="form-group valid-form has-error">
+												<input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="Nombres" required="">
+											</div>
+											<div class="form-group valid-form has-error">
+												<input type="text" class="form-control" id="id_last_name" name="last_name" placeholder="Apellidos" required="">
 											</div>
 											<div class="form-group has-feedback has-error">
-												<input type="email" class="form-control" name="Email" placeholder="Email" data-error="That email address is invalid" required="">
+												<input type="email" class="form-control" name="email" placeholder="Email" data-error="La dirección de correo es inválido" required="">
 												<span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-												<span class="help-block with-errors"><ul class="list-unstyled"><li>That email address is invalid</li></ul></span>
+												<span class="help-block with-errors"><ul class="list-unstyled"><li>La dirección de correo es inválido</li></ul></span>
 											</div>
 											<div class="form-group has-error">
 											  <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="Password" placeholder="Password" required="">
@@ -34,6 +64,7 @@
 											  <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" name="Confirm password" placeholder="Confirm password" required="">
 											  <div class="help-block with-errors"></div>
 											</div>
+											<!-- 
 											<div class="form-group">
 												<div class="radio">
 													<label>
@@ -48,22 +79,120 @@
 													</label>
 												</div>
 											</div>
+											 -->
 											<div class="form-group">
 												<div class="checkbox">
 													<label>
 														<input type="checkbox" id="terms" data-error="Before you wreck yourself" required="">
-														I have read and accept terms of use.
+														He leído y he aceptado los términos de uso.
 													</label>
 													<div class="help-block with-errors"></div>
 												</div>
 											</div>
 											<div class="form-group">
-												<button type="submit" class="btn btn-primary disabled">Submit</button>
+												<button type="submit" class="btn btn-primary disabled">Registrarme</button>
 											</div>
 										</form>
 									</div>
 								</div>
 							</div>
+							
+							<div class="panel panel-widget agile-validation">
+								<div class="validation-grids validation-grids-right login-form">
+									<div class="widget-shadow login-form-shadow" data-example-id="basic-forms"> 
+										<div class="input-info">
+											<h3>Inicio de Sesión:</h3>
+										</div>
+										<div class="form-body form-body-info">
+											<form data-toggle="validator" action="#" method="post" novalidate="true">
+												<div class="form-group has-feedback">
+													<input type="email" class="form-control" name="Eamil" placeholder="Enter Your Email" data-error="Bruh, that email address is invalid" required="">
+													<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+												</div>
+												<div class="form-group">
+													<input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword1" name="Password" placeholder="Password" required="">
+												</div>
+												<div class="bottom">
+													<div class="form-group">
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" id="terms1" data-error="Before you wreck yourself" required="">
+																Remember me
+															</label>
+															<div class="help-block with-errors"></div>
+														</div>
+													</div>
+													<div class="form-group">
+														<button type="submit" class="btn btn-primary disabled">Login</button>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clear"> </div>
+						</div>
+					</div>
+				</div>
+				<!-- //validation -->
+			</div>
+		</div>
+
+
+
+<div class="w3agile-validation w3ls-validation">
+<div class="panel panel-widget register-form">
+	<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
+		<div class="input-info">
+				<h3>Registro de Usuarios:</h3>
+						</div>
+									<div class="form-body form-body-info">
+									<!-- 
+										<form data-toggle="validator" action="#" method="post" novalidate="true">
+										 -->
+										<form method="post" novalidate>
+										
+  										{% csrf_token %} 
+											<div class="form-group">
+												<input type="text" class="form-control" name="username" placeholder="Ingrese un usuario">
+											</div>
+											<div class="form-group">
+												<input type="text" class="form-control" name="first_name" placeholder="Ingrese los nombres">
+											</div>
+											
+											<div class="form-group">
+												<input type="text" class="form-control" name="last_name" placeholder="Ingrese los apellidos">
+											</div>
+											<div class="form-group">
+												<input type="email" class="form-control" name="email" placeholder="Email" data-error="La dirección de correo es inválida">
+												<!-- 
+												<span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+												<span class="help-block with-errors"><ul class="list-unstyled"><li>That email address is invalid</li></ul></span>
+												 -->
+											</div>
+											<div class="form-group">
+											  <input type="password" data-toggle="validator" data-minlength="6" class="form-control" name="password1" placeholder="Password">
+											  <span class="help-block">Minimum of 6 characters</span>
+											</div>
+											<div class="form-group">
+											  <input type="password" class="form-control" data-match-error="Upps, No coinciden los passwords" name="password2" placeholder="Confirmar password">
+											  <!--  
+											  <div class="help-block with-errors"></div>
+											  -->
+											</div>
+											
+											
+											<div class="form-group">
+											<button type="submit" class="btn btn-primary">Aceptar</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
 
 
 {% endblock content %}

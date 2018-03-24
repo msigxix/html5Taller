@@ -192,7 +192,7 @@ input#inputPasswordConfirm {
 }
 /*--//validation--*/
 body {
-    background: url('../images/background.jpg')no-repeat 0px 0px;
+    background: url(..'/static/images/background.jpg')no-repeat 0px 0px;
     background-size: cover;
 	min-height: 799px;
 }
