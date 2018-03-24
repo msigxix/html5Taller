@@ -14,6 +14,9 @@ from .forms import SignUpForm
 class SignUpView(CreateView):
     model = Perfil
     form_class = SignUpForm
+    template_name = 'perfiles/Registro.html'
+    
+    
 
     def form_valid(self, form):
         '''
