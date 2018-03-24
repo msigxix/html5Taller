@@ -7,12 +7,72 @@
 	
 {% endblock %}
 
+{% block header %} 
+
+{% if user.is_authenticated %}
+        <h1>Hola {{ user.username }}</h1>
+        
+ <div id="wrapper">
+  <nav role="navigation" id="access">
+    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
+    <ul id="menu">
+      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
+                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
+                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
+                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
+                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
+                <li><a class="icon-envelope-alt" href="{% url 'sign_out' %}">Cerrar sesión</a></li>
+          </ul>
+      </nav>
+</div>
+   {% else %}
+   
+    <!-- 
+    <section id="menu">
+        <nav>
+
+
+            <ul>                
+                <li><a href="{% url 'sign_up' %}">Registrate</a></li>
+				<li><a href="{% url 'sign_in' %}">Iniciar sesión</a></li>
+				<li><a title="Opcion 1" href="#">Home</a></li>
+                <li><a title="Opcion 2" href="#">Mapa</a></li>
+                <li><a title="Opcion 3" href="#">Audio y Video</a></li>
+                <li><a title="Opcion 4" href="#">Canvas</a></li>
+                <li><a title="Opcion 5" href="#">Estadistico</a></li>
+            </ul>
+        </nav>
+    </section>
+     -->
+    <div id="wrapper">
+    <!-- 
+  <h1><strong>ClearNav</strong> responsive navigation</h1>
+   -->
+  <nav role="navigation" id="access">
+    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
+    <ul id="menu">
+      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
+                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
+                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
+                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
+                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
+                <li><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
+                <li><a class="icon-envelope-alt" href="{% url 'sign_in' %}">Inicia Sesión</a></li>
+          </ul>
+      </nav>
+</div>
+        
+        
+    {% endif %}
+ 	
+{% endblock %}
 
 {% block content %}
 
     {% if user.is_authenticated %}
+        <!-- 
         <h1>Hola {{ user.username }}</h1>
-        
+         -->
       
       <!--  
           <section id="menu">
@@ -28,21 +88,7 @@
         </nav>
     </section>
  -->
- 
- <div id="wrapper">
-  <nav role="navigation" id="access">
-    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
-    <ul id="menu">
-      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
-                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
-                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
-                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
-                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_out' %}">Cerrar sesión</a></li>
-          </ul>
-      </nav>
-</div>
- 
+
     <section id="map">
         <script>
             var map;
@@ -197,42 +243,6 @@
         
     {% else %}
     
-    <!-- 
-    <section id="menu">
-        <nav>
-
-
-            <ul>                
-                <li><a href="{% url 'sign_up' %}">Registrate</a></li>
-				<li><a href="{% url 'sign_in' %}">Iniciar sesión</a></li>
-				<li><a title="Opcion 1" href="#">Home</a></li>
-                <li><a title="Opcion 2" href="#">Mapa</a></li>
-                <li><a title="Opcion 3" href="#">Audio y Video</a></li>
-                <li><a title="Opcion 4" href="#">Canvas</a></li>
-                <li><a title="Opcion 5" href="#">Estadistico</a></li>
-            </ul>
-        </nav>
-    </section>
-     -->
-    <div id="wrapper">
-    <!-- 
-  <h1><strong>ClearNav</strong> responsive navigation</h1>
-   -->
-  <nav role="navigation" id="access">
-    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
-    <ul id="menu">
-      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
-                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
-                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
-                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
-                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_in' %}">Inicia Sesión</a></li>
-          </ul>
-      </nav>
-</div>
-        
-        
-    {% endif %}
+   {% endif %}
     
 {% endblock content %}

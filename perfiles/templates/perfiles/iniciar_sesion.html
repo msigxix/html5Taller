@@ -38,6 +38,16 @@
 															<div class="help-block with-errors"></div>
 														</div>
 													</div>
+													
+													{% if form.errors %}
+										                    <span class="help-block with-errors">
+											                    <ul class="list-unstyled">
+												                    <li>Tu usuario o contraseña, están incorrectos. 
+												                        Por favor inténtalo de nuevo.
+												                    </li>
+											                    </ul>
+										                    </span>
+								               		 {% endif %}
 													<div class="form-group">
 														<button id="id_login" name="login" type="submit" class="btn btn-primary disabled">Login</button>
 													</div>
