@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Bievenido{% endblock %}
+{% block title %}Bienvenido{% endblock %}
 
 {% block css %}
 	
@@ -13,11 +13,10 @@
     {% if user.is_authenticated %}
         <h1>Hola {{ user.username }}</h1>
         
-      <hr/>
+      
+      <!--  
           <section id="menu">
         <nav>
-
-
             <ul>
                 <li><a title="Opcion 1" href="#">Home</a></li>
                 <li><a title="Opcion 2" href="#">Mapa</a></li>
@@ -28,7 +27,22 @@
             </ul>
         </nav>
     </section>
-
+ -->
+ 
+ <div id="wrapper">
+  <nav role="navigation" id="access">
+    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
+    <ul id="menu">
+      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
+                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
+                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
+                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
+                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
+                <li><a class="icon-envelope-alt" href="{% url 'sign_out' %}">Cerrar sesión</a></li>
+          </ul>
+      </nav>
+</div>
+ 
     <section id="map">
         <script>
             var map;
@@ -80,9 +94,8 @@
        </video> 
         <ul id="playlist">
             {% load static %}		
-            <li movieurl="{% static "perfiles/Wyndham.webm" %}" type="video/mp4">Sintel</li>          
-            <li movieurl="https://www.youtube.com/watch?v=0wUEZJ7MwQc">Resident Evil</li>      
-            <li movieurl="http://www.ioncannon.net/examples/vp8-webm/big_buck_bunny_480p.webm">Big Buck Bunny</li>
+            <li movieurl="{% static "perfiles/Wyndham.webm" %}" type="video/mp4"></li>          
+            
         </ul>
               
         <script>
@@ -184,6 +197,7 @@
         
     {% else %}
     
+    <!-- 
     <section id="menu">
         <nav>
 
@@ -199,8 +213,24 @@
             </ul>
         </nav>
     </section>
-    
-    
+     -->
+    <div id="wrapper">
+    <!-- 
+  <h1><strong>ClearNav</strong> responsive navigation</h1>
+   -->
+  <nav role="navigation" id="access">
+    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
+    <ul id="menu">
+      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
+                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
+                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
+                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
+                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
+                <li><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
+                <li><a class="icon-envelope-alt" href="{% url 'sign_in' %}">Inicia Sesión</a></li>
+          </ul>
+      </nav>
+</div>
         
         
     {% endif %}
