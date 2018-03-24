@@ -41,9 +41,10 @@
 										<h3>Registro de Usuarios :</h3>
 									</div>
 									<div class="form-body form-body-info">
-										<form data-toggle="validator" action="#" method="post" novalidate="true">
+										<form data-toggle="validator" method="post" novalidate="true">
+										{% csrf_token %} 
 											<div class="form-group valid-form has-error">
-												<input type="text" class="form-control" id="inputName" name="username" placeholder="usuario" required="">
+												<input type="text" class="form-control" id="inputName" name="username" placeholder="Usuario" required="">
 											</div>
 											
 											<div class="form-group valid-form has-error">
@@ -57,14 +58,14 @@
 											<div class="form-group has-feedback has-error">
 												<input type="email" class="form-control" name="email" placeholder="Email" data-error="La dirección de correo es inválido" required="">
 												<span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-												<span class="help-block with-errors"><ul class="list-unstyled"><li>La dirección de correo es inválido</li></ul></span>
+												<span class="help-block with-errors"><ul class="list-unstyled"><li>Por favor ingresa una dirección de correo válida</li></ul></span>
 											</div>
 											<div class="form-group has-error">
-											  <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="Password" placeholder="Password" required="">
+											  <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="password1" placeholder="Password" required="">
 											  <span class="help-block">Minimum of 6 characters</span>
 											</div>
 											<div class="form-group">
-											  <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" name="Confirm password" placeholder="Confirm password" required="">
+											  <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" name="password2" placeholder="Confirm password" required="">
 											  <div class="help-block with-errors"></div>
 											</div>
 											<!-- 
@@ -126,7 +127,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<button type="submit" class="btn btn-primary disabled">Login</button>
+														<button id="id_login" name="login" type="submit" class="btn btn-primary disabled">Login</button>
 													</div>
 													<div class="clearfix"> </div>
 												</div>
@@ -143,59 +144,5 @@
 				<!-- //validation -->
 			</div>
 		</div>
-
-
-
-<div class="w3agile-validation w3ls-validation">
-<div class="panel panel-widget register-form">
-	<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
-		<div class="input-info">
-				<h3>Registro de Usuarios:</h3>
-						</div>
-									<div class="form-body form-body-info">
-									<!-- 
-										<form data-toggle="validator" action="#" method="post" novalidate="true">
-										 -->
-										<form method="post" novalidate>
-										
-  										{% csrf_token %} 
-											<div class="form-group">
-												<input type="text" class="form-control" name="username" placeholder="Ingrese un usuario">
-											</div>
-											<div class="form-group">
-												<input type="text" class="form-control" name="first_name" placeholder="Ingrese los nombres">
-											</div>
-											
-											<div class="form-group">
-												<input type="text" class="form-control" name="last_name" placeholder="Ingrese los apellidos">
-											</div>
-											<div class="form-group">
-												<input type="email" class="form-control" name="email" placeholder="Email" data-error="La dirección de correo es inválida">
-												<!-- 
-												<span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-												<span class="help-block with-errors"><ul class="list-unstyled"><li>That email address is invalid</li></ul></span>
-												 -->
-											</div>
-											<div class="form-group">
-											  <input type="password" data-toggle="validator" data-minlength="6" class="form-control" name="password1" placeholder="Password">
-											  <span class="help-block">Minimum of 6 characters</span>
-											</div>
-											<div class="form-group">
-											  <input type="password" class="form-control" data-match-error="Upps, No coinciden los passwords" name="password2" placeholder="Confirmar password">
-											  <!--  
-											  <div class="help-block with-errors"></div>
-											  -->
-											</div>
-											
-											
-											<div class="form-group">
-											<button type="submit" class="btn btn-primary">Aceptar</button>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-
 
 {% endblock content %}
