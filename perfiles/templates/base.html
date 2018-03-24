@@ -6,10 +6,14 @@
     <title>{% block title %}{% endblock %}</title>
 	
 	{% load static %}
+	<!-- 
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/style.css" %} />
-	
+	 -->
 	{% load static %}
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/styleRegistro.css" %} />
+	
+	{% load static %}
+	<link rel='stylesheet' type='text/css' href={% static "perfiles/styleclearnav.css" %} />
 	
 	{% load static %}
 	<script src="{% static "perfiles/jquery-3.3.1.min.js" %}"></script>
@@ -20,15 +24,21 @@
 	{% load static %}
 	<script src="{% static "perfiles/validator.min.js" %}"></script>
 	
+	{% load static %}
+	<script src="{% static "perfiles/index.js" %}"></script>
+	
+	<!--  
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	-->
 
     <style type="text/css">
-        #grande {
+        #grande3 {
             border: 1px solid black;
             /* width:100%;
          height: auto;  */
         }
         
-        #menu {
+        #menu3 {
             border: 1px solid gray;
             width: 100%;
             height: 10%;
@@ -61,14 +71,8 @@
             height: 45%;
             display: inline-block;
         }
+         
         
-        body,
-        html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
     </style>
 
     </head>
