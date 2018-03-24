@@ -96,10 +96,10 @@ function initMap() {
 	var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
 	addMarker(pos4,map,"ESPOL","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
-	function addMarker(location, map,etiq,titulo) {
+	function addMarker(location, map,etiq,titulo1) {
 		var marker = new google.maps.Marker({
 		position: location,
-			title: titulo,
+			title: titulo1,
 			label: etiq,
 			map: map
 		});
@@ -159,7 +159,7 @@ function initMap() {
 		});
 	}
 	
-	//mostrar_video(pathVideo);
-	//pintar_cuadro1("Espol");
-	//pintar_cuadro2("Espol");
+	//mostrar_video("static/perfiles/videos/ESPOL.mp4");
+	//pintar_cuadro1(["Grado", "Posgrado", "Formación Continua", "Cisco"],[5000, 1000, 500, 400],);
+	//pintar_cuadro2(["Grado", "Posgrado", "Formación Continua", "Cisco"],[3000, 1500, 800, 2450],'Número de Estudiantes en la ESPOL año 2018');
 }
