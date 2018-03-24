@@ -4,12 +4,14 @@
 
 {% block content %}
     
-    
+ <!--    
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" name="submit">
     </form>
+    
+     -->
 <div class="panel panel-widget agile-validation">
 								<div class="validation-grids validation-grids-right login-form">
 									<div class="widget-shadow login-form-shadow" data-example-id="basic-forms"> 
@@ -17,21 +19,21 @@
 											<h3>Inicio de Sesión:</h3>
 										</div>
 										<div class="form-body form-body-info">
-											<form data-toggle="validator" action="#" method="post" novalidate="true">
+											<form data-toggle="validator" method="post" novalidate="true">
 											  {% csrf_token %}
 												<div class="form-group has-feedback">
-													<input type="email" class="form-control" name="Eamil" placeholder="Enter Your Email" data-error="Bruh, that email address is invalid" required="">
+													<input type="text" class="form-control" name="username" value="{{username}}" placeholder="Ingresa tu usuario" data-error="El usuario no es válido" required="">
 													<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 												</div>
 												<div class="form-group">
-													<input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword1" name="Password" placeholder="Password" required="">
+													<input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="password" name="password" placeholder="Password" required="">
 												</div>
 												<div class="bottom">
 													<div class="form-group">
 														<div class="checkbox">
 															<label>
-																<input type="checkbox" id="terms1" data-error="Before you wreck yourself" required="">
-																Remember me
+																<input type="checkbox" id="terms1" data-error="Antes que lo arruines y te olvides" required="">
+																Recordar
 															</label>
 															<div class="help-block with-errors"></div>
 														</div>
