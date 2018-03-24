@@ -90,46 +90,7 @@
  -->
 
     <section id="map">
-        <script>
-            var map;
-
-            function initMap() {
-                var myLatLng = {
-                    lat: -2.1843405,
-                    lng: -79.8770334
-                };
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: myLatLng,
-                    zoom: 14
-                });
-				
-				var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
-				addMarker(pos1,map,"Malecon","Sitio turistico Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-				var pos2 = {lat:-2.179344,lng:-79.875692}; //posicion del marcador
-				addMarker(pos2,map,"Wyndham","Hotel Wyndham $143"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-				var pos3 = {lat:-2.183074,lng:-79.877357}; //posicion del marcador
-				addMarker(pos3,map,"Museo","Museo de los Bomberos"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-				var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
-				addMarker(pos4,map,"ESPOL","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-				function addMarker(location, map,etiq,titulo) {
-				// Add the marker at the clicked location, and add the next-available label
-				// from the array of alphabetical characters.
-				var marker = new google.maps.Marker({
-				position: location,
-				title: titulo,
-				label: etiq,
-				map: map
-				});
-				marker.addListener('click', function(){
-					alert(marker.label); // función a llamar, pasa el nomre mostrado
-				});
-				}
-            }
-        </script>
+      
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap" async defer></script>
     </section>
 
@@ -143,101 +104,18 @@
             <li movieurl="{% static "perfiles/Wyndham.webm" %}" type="video/mp4"></li>          
             
         </ul>
-              
-        <script>
-        
-        $(function() {
-            $("#playlist li").on("click", function() {
-                $("#videoarea").attr({
-                    "src": $(this).attr("movieurl"),
-                    "poster": "",
-                    "autoplay": "autoplay"
-                })
-            })
-            $("#videoarea").attr({
-                "src": $("#playlist li").eq(0).attr("movieurl"),
-                "poster": $("#playlist li").eq(0).attr("moviesposter")
-            })
-        })
-        
-        </script>
-
-
     </section>
 
 
 
     <section id="cuadro1">
         <canvas id="doughnut-chart" width="600" height="200"></canvas>
-        {% load static %}
-		<script src="{% static "perfiles/Chart.min.js" %}"></script>
-         
-        <script>
-            new Chart(document.getElementById("doughnut-chart"), {
-                type: 'doughnut',
-                data: {
-                    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-                    datasets: [{
-                        label: "Population (millions)",
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        data: [2478, 5267, 734, 784, 433]
-                    }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'Predicted world population (millions) in 2050'
-                    }
-                }
-            });
-        </script>
     </section>
 
 
     <section id="cuadro2">
 
         <canvas id="myChart"></canvas>
-        {% load static %}
-		<script src="{% static "perfiles/Chart.min.js" %}"></script>
-        <script>
-            var ctx = document.getElementById("myChart").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-        </script>
     </section>
         
         
