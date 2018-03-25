@@ -13,9 +13,17 @@ $(function()
 				chart_c.update();
 			}
 		});
+		
+		document.getElementById('removeData').addEventListener('click', function() {
+			datos_l.splice(-1, 1); // remove the label first
+			datos_c.pop();
+		
+			chart_c.update();
+		});		
   });
 		
-		
+
+
 
 
 		
