@@ -1,3 +1,8 @@
+$(function() 
+  {
+    actualizar_cuadros("ESPOL");
+  });
+		
 function mostrar_video(path_video){
 	$(function() {
      // alert(pathVideo);
@@ -73,6 +78,56 @@ function pintar_cuadro2(labelGraf3,datos3,titulo3)
             });
 }
 
+function actualizar_cuadros(cuadro)
+{
+			var pathVideo;
+			var labelGraf;
+			var datos;
+			var datos1;
+			var titulo;
+			
+			if (cuadro=="Malecon") {
+                    pathVideo = "static/perfiles/videos/Malecon2000.mp4";
+                    labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
+                    datos     = [2478, 5267, 734, 784];
+					datos1     = [5247, 3247, 1784, 2484];
+                    titulo    = 'Estadisticas Malecon 2000 en el año 2018';
+
+                   // alert(pathVideo);                  
+                   }else if  (cuadro=="Wyndham"){
+                    pathVideo = "static/perfiles/videos/Wyndham.webm";  
+                    labelGraf = ["Hab. Simples", "Hab. Dobles", "Vista al Rio", "Internas"];
+                    datos     = [400, 200,120, 200];
+					datos1     = [300, 250,180, 220];
+                    titulo    = 'Habitaciones en Hotel Wyndham'; 
+                    //alert(pathVideo);                
+                   
+                  }else if  (cuadro== "Museo"){
+                    pathVideo = "static/perfiles/videos/Museos.mp4"; 
+                    labelGraf = ["Arte", "Cultura", "Antiguedades"];
+                    datos     = [2000, 5267, 734];
+					datos1     = [1300, 2467, 1534];
+                    titulo    = 'Estadisticas de las Visitas en el Museo General de Guayaquil'; 
+                    //alert(pathVideo);  
+                   }else if (cuadro=="ESPOL") {
+                    pathVideo =  "static/perfiles/videos/ESPOL.mp4";
+                    labelGraf = ["Grado", "Posgrado", "Formación Continua", "Cisco"];
+                    datos     = [5000, 1000, 500, 400];
+					datos1     = [3000, 1500, 800, 2450];
+                    titulo    = 'Número de Estudiantes en la ESPOL año 2018';
+
+                    //alert(pathVideo);  
+
+       }
+	   else
+	   {
+                        pathVideo =  " ";
+       }
+	   mostrar_video(pathVideo);
+	   pintar_cuadro1(labelGraf,datos,titulo);
+	   pintar_cuadro2(labelGraf,datos1,titulo);	
+}
+
 function initMap() {
 	var map;
     var myLatLng = {
@@ -104,58 +159,9 @@ function initMap() {
 			map: map
 		});
 	
-	
-	 
-	
 		marker.addListener('click', function()
 		{
-			var pathVideo;
-			var labelGraf;
-			var datos;
-			var datos1;
-			var titulo;
-			
-			if (marker.label=="Malecon") {
-                    pathVideo = "static/perfiles/videos/Malecon2000.mp4";
-                    labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
-                    datos     = [2478, 5267, 734, 784];
-					datos1     = [5247, 3247, 1784, 2484];
-                    titulo    = 'Estadisticas Malecon 2000 en el año 2018';
-
-                   // alert(pathVideo);                  
-                   }else if  (marker.label=="Wyndham"){
-                    pathVideo = "static/perfiles/videos/Wyndham.webm";  
-                    labelGraf = ["Hab. Simples", "Hab. Dobles", "Vista al Rio", "Internas"];
-                    datos     = [400, 200,120, 200];
-					datos1     = [300, 250,180, 220];
-                    titulo    = 'Habitaciones en Hotel Wyndham'; 
-                    //alert(pathVideo);                
-                   
-                  }else if  (marker.label== "Museo"){
-                    pathVideo = "static/perfiles/videos/Museos.mp4"; 
-                    labelGraf = ["Arte", "Cultura", "Antiguedades"];
-                    datos     = [2000, 5267, 734];
-					datos1     = [1300, 2467, 1534];
-                    titulo    = 'Estadisticas de las Visitas en el Museo General de Guayaquil'; 
-                    //alert(pathVideo);  
-                   }else if (marker.label=="ESPOL") {
-                    pathVideo =  "static/perfiles/videos/ESPOL.mp4";
-                    labelGraf = ["Grado", "Posgrado", "Formación Continua", "Cisco"];
-                    datos     = [5000, 1000, 500, 400];
-					datos1     = [3000, 1500, 800, 2450];
-                    titulo    = 'Número de Estudiantes en la ESPOL año 2018';
-
-                    //alert(pathVideo);  
-
-       }
-	   else
-	   {
-                        pathVideo =  " ";
-       }
-	   mostrar_video(pathVideo);
-	   pintar_cuadro1(labelGraf,datos,titulo);
-	   pintar_cuadro2(labelGraf,datos1,titulo);
-			
+			actualizar_cuadros(marker.label);
 		});
 	}
 	
