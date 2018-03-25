@@ -1,7 +1,26 @@
+var datos_c;
+var datos_l;
+var chart_c;
+
 $(function() 
   {
     actualizar_cuadros("ESPOL");
+	document.getElementById('addData').addEventListener('click', function() {
+			if (datos_c.length > 0) {
+				var month = "Columna " + (datos_c.length + 1);
+				datos_l.push(month);
+				datos_c.push(800);
+				chart_c.update();
+			}
+		});
   });
+		
+		
+
+
+		
+
+		
 		
 function mostrar_video(path_video){
 	$(function() {
@@ -76,6 +95,7 @@ function pintar_cuadro2(labelGraf3,datos3,titulo3)
                     }
                 }
             });
+			chart_c=myChart;
 }
 
 function actualizar_cuadros(cuadro)
@@ -126,6 +146,8 @@ function actualizar_cuadros(cuadro)
 	   mostrar_video(pathVideo);
 	   pintar_cuadro1(labelGraf,datos,titulo);
 	   pintar_cuadro2(labelGraf,datos1,titulo);	
+	   datos_c=datos1;
+	   datos_l=labelGraf;
 }
 
 function initMap() {
