@@ -79,10 +79,15 @@ nav ul li a:hover {
 #playlist li:hover{
     color:blue;                        
 }
+#videodiv {
+    float: center; 
+    width:85%;
+    height:80%;
+}
+
 #videoarea {
-    float:left;
-    width:500px;
-    height:300px;
-    margin:10px;    
+    float: right;
+    width:85%;
+    height:80%; 
     border:1px solid silver;
 }

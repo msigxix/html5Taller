@@ -25,14 +25,11 @@ $(function()
 
 
 
-
-		
-
 		
 		
 function mostrar_video(path_video){
 	$(function() {
-     // alert(pathVideo);
+      alert(pathVideo);
      $("#videoarea").attr({
 		"src":  path_video,
 		"poster": "",
@@ -114,31 +111,31 @@ function actualizar_cuadros(cuadro)
 			var datos1;
 			var titulo;
 			
-			if (cuadro=="Malecon") {
-                    pathVideo = "static/perfiles/videos/Malecon2000.mp4";
+			if (cuadro=="El Vecino") {
+                    pathVideo = "static/perfiles/videos/Wyndham.webm";
                     labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
                     datos     = [2478, 5267, 734, 784];
 					datos1     = [5247, 3247, 1784, 2484];
                     titulo    = 'Estadisticas Malecon 2000 en el año 2018';
 
                    // alert(pathVideo);                  
-                   }else if  (cuadro=="Wyndham"){
-                    pathVideo = "static/perfiles/videos/Wyndham.webm";  
+                   }else if  (cuadro=="El Girón"){
+                    pathVideo = "static/perfiles/videos/CAMPUS_GIRON.mp4";  
                     labelGraf = ["Hab. Simples", "Hab. Dobles", "Vista al Rio", "Internas"];
                     datos     = [400, 200,120, 200];
 					datos1     = [300, 250,180, 220];
                     titulo    = 'Habitaciones en Hotel Wyndham'; 
                     //alert(pathVideo);                
                    
-                  }else if  (cuadro== "Museo"){
-                    pathVideo = "static/perfiles/videos/Museos.mp4"; 
+                  }else if  (cuadro== "Sur"){
+                    pathVideo = "static/perfiles/videos/CAMPUS_SUR.mp4"; 
                     labelGraf = ["Arte", "Cultura", "Antiguedades"];
                     datos     = [2000, 5267, 734];
 					datos1     = [1300, 2467, 1534];
                     titulo    = 'Estadisticas de las Visitas en el Museo General de Guayaquil'; 
                     //alert(pathVideo);  
-                   }else if (cuadro=="ESPOL") {
-                    pathVideo =  "static/perfiles/videos/ESPOL.mp4";
+                   }else if (cuadro=="Centenario") {
+                    pathVideo =  "static/perfiles/videos/CAMPUS_CENTENARIO.mp4";
                     labelGraf = ["Grado", "Posgrado", "Formación Continua", "Cisco"];
                     datos     = [5000, 1000, 500, 400];
 					datos1     = [3000, 1500, 800, 2450];
@@ -149,7 +146,7 @@ function actualizar_cuadros(cuadro)
        }
 	   else
 	   {
-                        pathVideo =  " ";
+         pathVideo =  " ";
        }
 	   mostrar_video(pathVideo);
 	   pintar_cuadro1(labelGraf,datos,titulo);
@@ -170,16 +167,16 @@ function initMap() {
     });
 				
 	var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
-	addMarker(pos1,map,"Malecon","Sitio turistico Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	addMarker(pos1,map,"EL Vecino","Sitio turistico Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
 	var pos2 = {lat:-2.179344,lng:-79.875692}; //posicion del marcador
-	addMarker(pos2,map,"Wyndham","Hotel Wyndham $143"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	addMarker(pos2,map,"El Girón","Hotel Wyndham $143"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
 	var pos3 = {lat:-2.183074,lng:-79.877357}; //posicion del marcador
-	addMarker(pos3,map,"Museo","Museo de los Bomberos"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	addMarker(pos3,map,"Sur","Museo de los Bomberos"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
 	var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
-	addMarker(pos4,map,"ESPOL","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	addMarker(pos4,map,"Centenario","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
 	function addMarker(location, map,etiq,titulo1) {
 		var marker = new google.maps.Marker({
