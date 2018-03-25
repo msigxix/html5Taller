@@ -32,4 +32,4 @@ class campus (models.Model):
     cam_descripcion = models.CharField(max_length=50)
     cam_longitud = models.CharField(max_length=50)
     cam_latitud = models.CharField(max_length=50)
-    
+
