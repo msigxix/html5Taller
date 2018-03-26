@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView 
+from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^registrate/$', SignUpView.as_view(template_name="Registro.html"), name='sign_up'),
     url(r'^inicia-sesion/$', SignInView.as_view(), name='sign_in'),
     url(r'^cerrar-sesion/$', SignOutView.as_view(), name='sign_out'),
+    url(r'^campus-list/$', CampusVista.as_view(), name='ver_campus'),
 ]
 
 

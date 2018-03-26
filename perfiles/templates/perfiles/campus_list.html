@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Campus Listado</h1>
+
+    {% if campus_list %}
+    <ul>
+
+      {% for campus in campus_list %}
+      <li>
+        <h3> {{ campus.cam_nombre }} </h3> <p>  ({{campus.cam_descripcion}});
+        {{ campus.id_campus }}; Coordenadas:   {{ campus.cam_longitud }} :: {{ campus.cam_latitud }}
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>No hay Campus registrados</p>
+    {% endif %}       
+{% endblock %}

@@ -4,12 +4,14 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-
 from django.views.generic import CreateView, TemplateView
+from django.views import generic
 
 from .models import Perfil
 
 from .forms import SignUpForm
+from django.views.generic.detail import DetailView
+from perfiles.models import carreras, campus
 
 
 class SignUpView(CreateView):
@@ -46,4 +48,18 @@ from django.contrib.auth.views import LoginView, LogoutView
 class SignOutView(LogoutView):
     pass
 
+class CampusVista (generic.ListView):
+    model: campus
+    template_name = 'perfiles/campus_list.html'   
+    
+    def get_queryset(self):
+        queryset = campus.objects.all()
+        return queryset
    
+
+    
+    
+    
+    
+    
+    
