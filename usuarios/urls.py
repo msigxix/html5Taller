@@ -16,12 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
+from perfiles.forms import campusform 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista
+from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista, campus_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,7 +30,8 @@ urlpatterns = [
     url(r'^registrate/$', SignUpView.as_view(template_name="Registro.html"), name='sign_up'),
     url(r'^inicia-sesion/$', SignInView.as_view(), name='sign_in'),
     url(r'^cerrar-sesion/$', SignOutView.as_view(), name='sign_out'),
-    url(r'^campus-list/$', CampusVista.as_view(), name='ver_campus'),
+    url(r'^campus-form/$', campus_view, name='campus_crear'),
+    url(r'^campus-list/$', CampusVista.as_view(), name='campus_ver'),
 ]
 
 

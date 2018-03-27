@@ -9,9 +9,11 @@ from django.views import generic
 
 from .models import Perfil
 
-from .forms import SignUpForm
+from .forms import SignUpForm 
 from django.views.generic.detail import DetailView
 from perfiles.models import carreras, campus
+from django.template.context_processors import request
+from perfiles.forms import campusform
 
 
 class SignUpView(CreateView):
@@ -24,7 +26,7 @@ class SignUpView(CreateView):
     
     
 
-    def form_valid(self, form):
+def form_valid(self, form):
         '''
         En este parte, si el formulario es valido guardamos lo que se obtiene de él y usamos authenticate para que el usuario incie sesión luego de haberse registrado y lo redirigimos al index
         '''
@@ -48,8 +50,23 @@ from django.contrib.auth.views import LoginView, LogoutView
 class SignOutView(LogoutView):
     pass
 
+#usando una vista basada en funcion
+def campus_view(request):
+    #model:campus
+    if request.method == 'POST':
+        form=campusform(request.POST)
+        
+        if form.is_valid():
+            form.save()
+        return redirect('bienvenida')
+    
+    else:
+        form = campusform()
+    return render (request,'perfiles/campus_form.html',{'form':form})
+
+
 class CampusVista (generic.ListView):
-    model: campus
+    model= campus
     template_name = 'perfiles/campus_list.html'   
     
     def get_queryset(self):
