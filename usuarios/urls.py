@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from perfiles.forms import campusform 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista, campus_view
+from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista, campus_view, carreras_view, periodoslectivos_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,6 +33,9 @@ urlpatterns = [
     url(r'^cerrar-sesion/$', SignOutView.as_view(), name='sign_out'),
     url(r'^campus-form/$', campus_view, name='campus_crear'),
     url(r'^campus-list/$', CampusVista.as_view(), name='campus_ver'),
+    url(r'^carreras-form/$', carreras_view, name='carreras_crear'),
+    url(r'^periodoslectivos-form/$', periodoslectivos_view, name='periodoslectivos_crear'),
+    #periodoslectivos
 ]
 
 

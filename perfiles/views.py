@@ -13,7 +13,7 @@ from .forms import SignUpForm
 from django.views.generic.detail import DetailView
 from perfiles.models import carreras, campus
 from django.template.context_processors import request
-from perfiles.forms import campusform
+from perfiles.forms import campusform, carrerasform, periodoslectivosform
 
 
 class SignUpView(CreateView):
@@ -64,6 +64,32 @@ def campus_view(request):
         form = campusform()
     return render (request,'perfiles/campus_form.html',{'form':form})
 
+def carreras_view(request):
+    #model:campus
+    if request.method == 'POST':
+        form=carrerasform(request.POST)
+        
+        if form.is_valid():
+            form.save()
+        return redirect('bienvenida')
+    
+    else:
+        form = carrerasform()
+    return render (request,'perfiles/carreras_form.html',{'form':form})
+
+
+def periodoslectivos_view(request):
+    #model:campus
+    if request.method == 'POST':
+        form=periodoslectivosform(request.POST)
+        
+        if form.is_valid():
+            form.save()
+        return redirect('bienvenida')
+    
+    else:
+        form = periodoslectivosform()
+    return render (request,'perfiles/periodoslectivos_form.html',{'form':form})
 
 class CampusVista (generic.ListView):
     model= campus

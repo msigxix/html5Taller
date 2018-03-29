@@ -1,10 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from .models import campus
+from .models import campus 
 from .models import Perfil
+from .models import carreras, periodoslectivos
 from blivetgui.dialogs import widgets
 from django.forms import ModelForm
+from django.contrib.contenttypes import fields
+from pip._vendor.webencodings import labels
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
@@ -48,7 +51,44 @@ class campusform (forms.ModelForm):
                 'cam_longitud': forms.TextInput(attrs={'class': 'form-control'}),
                 'cam_latitud': forms.TextInput(attrs={'class': 'form-control'}),
             }
-        
-        
-        
-        
+
+
+class carrerasform (forms.ModelForm):
+
+    class Meta:
+        model = carreras
+        fields = [
+                'id_carrera',
+                'car_nombre',
+                'id_campus',
+            ]
+        labels = {
+                'id_carrera':'Codigo',
+                'car_nombre':'Nombre de la carrera',
+                'id_campus' :'Id Campus',
+            }
+        widgets = {
+            'car_nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'id_campus': forms.Select(attrs={'class': 'form-control'}),
+            }
+
+#periodoslectivos
+
+class periodoslectivosform (forms.ModelForm):
+
+    class Meta:
+        model = periodoslectivos
+        fields = [
+                'id_periodo',
+                'per_descripcion',
+                
+            ]
+        labels = {
+                'id_periodo':'Codigo Periodo',
+                'per_descripcion':'Descripción Período',
+                
+            }
+        widgets = {
+            'id_periodo': forms.TextInput(attrs={'class': 'form-control'}),
+            'per_descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+            }  

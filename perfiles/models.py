@@ -53,11 +53,6 @@ class carreras (models.Model):
     car_nombre= models.CharField(max_length=50)
     id_campus = models.ForeignKey(campus, on_delete=models.CASCADE)
     
-    def __str__(self):
-        """
-        String for representing the Model object.
-        """
-        return self
     
     
     
