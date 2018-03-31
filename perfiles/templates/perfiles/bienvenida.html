@@ -1,33 +1,45 @@
-{% extends "base.html" %}
-
-{% block title %}Bienvenido{% endblock %}
-
-{% block css %}
-	
-	
-{% endblock %}
-
+{% extends "base.html" %} 
+{% block title %}Bienvenido{% endblock %} 
+{% block css %} {% endblock %} 
 {% block header %} 
-
 {% if user.is_authenticated %}
-        <h1>Hola {{ user.username }}</h1>
-        
- <div id="wrapper">
-  <nav role="navigation" id="access">
-    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
-    <ul id="menu">
-      			   <li><a class="icon-home" href="{% url 'bienvenida' %}">Inicio</a></li><!-- whitespace
-                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
-                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
-                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
-                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_out' %}">Cerrar sesión</a></li>
-          </ul>
-      </nav>
+<h1>Hola {{ user.username }}</h1>
+
+<div id="wrapper">
+    <nav role="navigation" id="access">
+        <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
+        <ul id="menu">
+            <li><a class="icon-home" href="{% url 'bienvenida' %}">Inicio</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-group" href="#quisommesnous">Acerca De</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-leaf" href="#services">Oferta Académica</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
+
+            <li>
+                <a class="icon-envelope-alt" href="#contact">Ingreso de Datos</a>
+                <ul style="position: absolute; display: block; float:none;  ">
+                    <li><a href="#contact">Ingreso de Campus</a></li>
+                    <li><a href="#contact">Ingreso de Carreras</a></li>
+                    <li><a href="#contact">Ingreso de Resumen Estudiantes</a></li>
+                    <li><a href="#contact">Ingreso de Resumen Asignaturas</a></li>
+                </ul>
+            </li>
+            <li><a class="icon-envelope-alt" href="{% url 'sign_out' %}">Cerrar sesión</a></li>
+        </ul>
+    </nav>
 </div>
-   {% else %}
-   
-    <!-- 
+
+{% else %}
+
+<!-- 
     <section id="menu">
         <nav>
 
@@ -44,37 +56,44 @@
         </nav>
     </section>
      -->
-    <div id="wrapper">
+<div id="wrapper">
     <!-- 
   <h1><strong>ClearNav</strong> responsive navigation</h1>
    -->
-  <nav role="navigation" id="access">
-    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
-    <ul id="menu">
-      <li><a class="icon-home" href="{% url 'bienvenida' %}">Inicio</a></li><!-- whitespace
-                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
-                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
-                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
-                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
-                <li class="active"><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_in' %}">Inicia Sesión</a></li>
-          </ul>
-      </nav>
+    <nav role="navigation" id="access">
+        <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
+        <ul id="menu">
+            <li><a class="icon-home" href="{% url 'bienvenida' %}">Inicio</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-group" href="#quisommesnous">Acerca De</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-leaf" href="#services">Oferta Académica</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li>
+            <!-- whitespace
+                -->
+            <li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
+            <li class="active"><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
+            <li><a class="icon-envelope-alt" href="{% url 'sign_in' %}">Inicia Sesión</a></li>
+        </ul>
+    </nav>
 </div>
-        
-        
-    {% endif %}
- 	
-{% endblock %}
 
-{% block content %}
 
-    {% if user.is_authenticated %}
-        <!-- 
+{% endif %} 
+{% endblock %} 
+
+{% block content %} 
+
+{% if user.is_authenticated %}
+<!-- 
         <h1>Hola {{ user.username }}</h1>
          -->
-      
-      <!--  
+
+<!--  
           <section id="menu">
         <nav>
             <ul>
@@ -89,40 +108,40 @@
     </section>
  -->
 
-    <section id="map">
-      
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap" async defer></script>
-    </section>
+<section id="map">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap" async defer></script>
+</section>
 
 
 
-    <section id="video">
-       <video id="videoarea" controls="controls" poster="" src="">
-       </video> 
-        <ul id="playlist">
-            {% load static %}		
-            <li movieurl="{% static "perfiles/Wyndham.webm" %}" type="video/mp4"></li>          
-            
-        </ul>
-    </section>
+<section id="video">
+    <video id="videoarea" controls="controls" poster="" src="">
+       </video>
+    <ul id="playlist">
+        {% load static %}
+        <li movieurl="{% static " perfiles/Wyndham.webm " %}" type="video/mp4"></li>
+
+    </ul>
+</section>
 
 
 
-    <section id="cuadro1">
-        <canvas id="doughnut-chart" width="600" height="200"></canvas>
-		
-    </section>
+<section id="cuadro1">
+    <canvas id="doughnut-chart" width="600" height="200"></canvas>
+
+</section>
 
 
-    <section id="cuadro2">
-        <canvas id="myChart"></canvas>
-		<button id="addData">Añadir datos</button>
-		<button id="removeData">Remover Datos</button>
-    </section>
-        
-        
-    {% else %}
-    
-   {% endif %}
-    
+<section id="cuadro2">
+    <canvas id="myChart"></canvas>
+    <button id="addData">Añadir datos</button>
+    <button id="removeData">Remover Datos</button>
+</section>
+
+
+{% else %} 
+
+{% endif %} 
+
 {% endblock content %}

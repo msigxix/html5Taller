@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+	{% block title %}Bienvenidos{% endblock %} 
+	{% block content %} 
+	{% if user.is_authenticated %}
+
+<div id="grande">
+<div id="map">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7tphgxHk80JIzJySzGvvc39TceA8v-M&libraries=places&callback=initMap" async defer></script>
+</div><div id="video">
+    <video id="videoarea" controls="controls" poster="" src="">
+       </video></div><br>
+<div id="cuadro1"><canvas id="doughnut-chart" ></canvas></div><div id="cuadro2">
+    <canvas id="myChart"></canvas>
+    <button id="addData">Añadir datos</button>
+    <button id="removeData">Remover Datos</button>
+</div>
+</div>
+
+{% else %} 
+
+{% endif %} 
+	
+	{% endblock content %}

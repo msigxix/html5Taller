@@ -13,7 +13,7 @@ from .forms import SignUpForm
 from django.views.generic.detail import DetailView
 from perfiles.models import carreras, campus
 from django.template.context_processors import request
-from perfiles.forms import campusform, carrerasform, periodoslectivosform
+from perfiles.forms import campusform, carrerasform, periodoslectivosform, estudiantesresumenform, asignaturasresumenform
 
 
 class SignUpView(CreateView):
@@ -38,7 +38,7 @@ def form_valid(self, form):
         return redirect('/')
 
 class BienvenidaView(TemplateView):
-   template_name = 'perfiles/bienvenida.html'
+   template_name = 'perfiles/index.html'
    
 from django.contrib.auth.views import LoginView
 
@@ -90,6 +90,35 @@ def periodoslectivos_view(request):
     else:
         form = periodoslectivosform()
     return render (request,'perfiles/periodoslectivos_form.html',{'form':form})
+
+
+def estudiantesresumen_view(request):
+    #model:campus
+    if request.method == 'POST':
+        form=estudiantesresumenform(request.POST)
+        
+        if form.is_valid():
+            form.save()
+        return redirect('bienvenida')
+    
+    else:
+        form = estudiantesresumenform()
+    return render (request,'perfiles/estudiantesresumen_form.html',{'form':form})
+
+#asignaturasresumenform
+
+def asignaturasresumen_view(request):
+    #model:campus
+    if request.method == 'POST':
+        form=asignaturasresumenform(request.POST)
+        
+        if form.is_valid():
+            form.save()
+        return redirect('bienvenida')
+    
+    else:
+        form = asignaturasresumenform()
+    return render (request,'perfiles/asignaturasresumen_form.html',{'form':form})
 
 class CampusVista (generic.ListView):
     model= campus

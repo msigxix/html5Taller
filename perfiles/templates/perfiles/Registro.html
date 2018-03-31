@@ -1,12 +1,7 @@
-{% extends "base.html" %}
-
-{% block title %}Registro de Usuarios{% endblock %}
+{% extends "base.html" %} {% block title %}Registro de Usuarios{% endblock %} {% block content %}
 
 
-{% block content %}
- 
-  
- <!-- 
+<!-- 
  <div class="form-body form-body-info">
 	<form method="post" novalidate>
 	{% csrf_token %}
@@ -31,44 +26,47 @@
 					<div class="progressbar-heading grids-heading">
 						<h2>Registro de Usuarios</h2>
 					</div>
- -->	 				
-					<div class="forms-grids" style="position:absolute; left:35%; width: 65% "  >
-						<div class="forms3">
-						<div class="w3agile-validation w3ls-validation">
-							<div class="panel panel-widget agile-validation register-form">
-								<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
-									<div class="input-info">
-										<h3>Formulario de Registro:</h3>
-									</div>
-									<div class="form-body form-body-info">
-										<form data-toggle="validator" method="post" novalidate="true">
-										{% csrf_token %} 
-											<div class="form-group valid-form has-error">
-												<input type="text" class="form-control" id="inputName" name="username" placeholder="Usuario" required="">
-											</div>
-											
-											<div class="form-group valid-form has-error">
-												<input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="Nombres" required="">
-											</div>
-											<!-- 	 -->
-											<div class="form-group valid-form has-error">
-												<input type="text" class="form-control" id="id_last_name" name="last_name" placeholder="Apellidos" required="">
-											</div>
-										
-											<div class="form-group has-feedback has-error">
-												<input type="email" class="form-control" name="email" placeholder="Email" data-error="La dirección de correo es inválido" required="">
-												<span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
-												<span class="help-block with-errors"><ul class="list-unstyled"><li>ejemplo@empresa.com es una dirección de correo válida</li></ul></span>
-											</div>
-											<div class="form-group has-error">
-											  <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="password1" placeholder="Password" required="">
-											  <span class="help-block">Mínimo 6 caracteres</span>
-											</div>
-											<div class="form-group">
-											  <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Upss!, no coinciden las claves" name="password2" placeholder="Confirma el password" required="">
-											  <div class="help-block with-errors"></div>
-											</div>
-											<!-- 
+ -->
+ <!-- 
+<div class="forms-grids" style="position:absolute; left:35%; width: 65% ">
+ -->
+ <div class="forms-grids">
+    <div class="forms3">
+        <div class="w3agile-validation w3ls-validation">
+            <div class="panel panel-widget agile-validation register-form">
+                <div class="validation-grids widget-shadow" data-example-id="basic-forms">
+                    <div class="input-info">
+                        <h3>Formulario de Registro:</h3>
+                    </div>
+                    <div class="form-body form-body-info">
+                        <form data-toggle="validator" method="post" novalidate="true">
+                            {% csrf_token %}
+                            <div class="form-group valid-form has-error">
+                                <input type="text" class="form-control" id="inputName" name="username" placeholder="Usuario" required="">
+                            </div>
+
+                            <div class="form-group valid-form has-error">
+                                <input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="Nombres" required="">
+                            </div>
+                            <!-- 	 -->
+                            <div class="form-group valid-form has-error">
+                                <input type="text" class="form-control" id="id_last_name" name="last_name" placeholder="Apellidos" required="">
+                            </div>
+
+                            <div class="form-group has-feedback has-error">
+                                <input type="email" class="form-control" name="email" placeholder="Email" data-error="La dirección de correo es inválido" required="">
+                                <span class="glyphicon form-control-feedback glyphicon-remove" aria-hidden="true"></span>
+                                <span class="help-block with-errors"><ul class="list-unstyled"><li>Ej: usuario@dominio.com es una dirección de correo válida</li></ul></span>
+                            </div>
+                            <div class="form-group has-error">
+                                <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="password1" placeholder="Password" required="">
+                                <span class="help-block">Mínimo 6 caracteres</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Upss!, no coinciden las claves" name="password2" placeholder="Confirma el password" required="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <!-- 
 											<div class="form-group">
 												<div class="radio">
 													<label>
@@ -84,36 +82,35 @@
 												</div>
 											</div>
 											 -->
-											<div class="form-group">
-												<div class="checkbox">
-													<label>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
 														<input type="checkbox" id="terms" data-error="Debes aceptarlo, antes que te arruines" required="">
 														He leído y he aceptado los términos de uso.
 													</label>
-													<div class="help-block with-errors"></div>
-												</div>
-											</div>
-											{% if form.errors %}
-										                    <span class="help-block with-errors">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            {% if form.errors %}
+                            <span class="help-block with-errors">
 											                    <ul class="list-unstyled">
 												                    <li>Es posible que ya exista el usuario, o revisa que la contraseña tenga 1 Letra, 1 número y un caracter especial..
 												                    </li>
 											                    </ul>
-										                    </span>
-								               		 {% endif %}
-											<div class="form-group">
-												<button type="submit" class="btn btn-primary disabled">Registrarme</button>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-							
-							
-						</div>
-						<div class="clear"> </div>
-						</div>
-					</div>
+										                    </span> {% endif %}
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary disabled">Registrarme</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="clear"> </div>
+    </div>
+</div>
 <!-- 					
 				</div>
 				<!-- //validation -->

@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista, campus_view, carreras_view, periodoslectivos_view
+from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista, campus_view, carreras_view, periodoslectivos_view, estudiantesresumen_view, asignaturasresumen_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -35,6 +35,9 @@ urlpatterns = [
     url(r'^campus-list/$', CampusVista.as_view(), name='campus_ver'),
     url(r'^carreras-form/$', carreras_view, name='carreras_crear'),
     url(r'^periodoslectivos-form/$', periodoslectivos_view, name='periodoslectivos_crear'),
+    url(r'^estudiantesresumen-form/$', estudiantesresumen_view, name='estudiantesresumen_crear'),
+    url(r'^asignaturasresumen-form/$', asignaturasresumen_view, name='asignaturasresumen_crear'),
+    #asignaturasresumen_view
     #periodoslectivos
 ]
 
