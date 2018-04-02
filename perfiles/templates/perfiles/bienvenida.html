@@ -16,7 +16,7 @@
   <nav role="navigation" id="access">
     <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
     <ul id="menu">
-      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
+      			   <li><a class="icon-home" href="{% url 'bienvenida' %}">Inicio</a></li><!-- whitespace
                 --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
                 --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
                 --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
@@ -51,12 +51,12 @@
   <nav role="navigation" id="access">
     <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
     <ul id="menu">
-      <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace
+      <li><a class="icon-home" href="{% url 'bienvenida' %}">Inicio</a></li><!-- whitespace
                 --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
                 --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
                 --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
                 --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
+                <li class="active"><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
                 <li><a class="icon-envelope-alt" href="{% url 'sign_in' %}">Inicia Sesión</a></li>
           </ul>
       </nav>
@@ -70,9 +70,9 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-        
-        <h3>Hola {{ user.username }}</h3>
-        
+        <!-- 
+        <h1>Hola {{ user.username }}</h1>
+         -->
       
       <!--  
           <section id="menu">
@@ -95,31 +95,24 @@
     </section>
 
 
- 
-    <section id="video">
 
-           <div id="videodiv">
-                    <video id="videoarea" controls="controls" poster="" src="">  </video> 
-                    
-            </div>
-       
-        <!--ul id="playlist">
-            {% load static %}		
-            <li movieurl="{% static "perfiles/Wyndham.webm" %}" type="video/mp4"></li>          
-            
-        </ul-->
+    <section id="video"> 
+       <video id="videoarea" controls="controls" poster="" src="" width="100%" height="100%">
+       </video> 
     </section>
 
 
 
     <section id="cuadro1">
-        <canvas id="doughnut-chart" width="600" height="200"></canvas>
+        <canvas id="doughnut-chart" width="100%" height="45%"></canvas>
+		
     </section>
 
 
     <section id="cuadro2">
-
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart" width="100%" height="45%"></canvas>
+		<button id="addData">Añadir datos</button>
+		<button id="removeData">Remover Datos</button>
     </section>
         
         

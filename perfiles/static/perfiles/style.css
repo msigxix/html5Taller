@@ -79,15 +79,18 @@ nav ul li a:hover {
 #playlist li:hover{
     color:blue;                        
 }
-#videodiv {
-    float: center; 
-    width:85%;
-    height:80%;
-}
+  
 
 #videoarea {
-    float: right;
-    width:85%;
-    height:80%; 
+   float:center;
+   width:700px;
+   height:80px;
+   /*margin:10px; */   
     border:1px solid silver;
 }
+#doughnut-chart {
+    float:center;
+    width:600px;
+    height:200px;
+ }
+

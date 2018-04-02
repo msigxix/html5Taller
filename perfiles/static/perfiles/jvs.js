@@ -4,7 +4,7 @@ var chart_c;
 
 $(function() 
   {
-    actualizar_cuadros("ESPOL");
+    actualizar_cuadros("El Vecino");
 	document.getElementById('addData').addEventListener('click', function() {
 			if (datos_c.length > 0) {
 				var month = "Columna " + (datos_c.length + 1);
@@ -25,11 +25,14 @@ $(function()
 
 
 
+
+		
+
 		
 		
 function mostrar_video(path_video){
 	$(function() {
-      alert(pathVideo);
+     // alert(pathVideo);
      $("#videoarea").attr({
 		"src":  path_video,
 		"poster": "",
@@ -112,15 +115,15 @@ function actualizar_cuadros(cuadro)
 			var titulo;
 			
 			if (cuadro=="El Vecino") {
-                    pathVideo = "static/perfiles/videos/Wyndham.webm";
+                    pathVideo = "static/perfiles/videos/Vecino.mp4";
                     labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
                     datos     = [2478, 5267, 734, 784];
 					datos1     = [5247, 3247, 1784, 2484];
                     titulo    = 'Estadisticas Malecon 2000 en el año 2018';
 
                    // alert(pathVideo);                  
-                   }else if  (cuadro=="El Girón"){
-                    pathVideo = "static/perfiles/videos/CAMPUS_GIRON.mp4";  
+                   }else if  (cuadro=="El Giron"){
+                    pathVideo = "static/perfiles/videos/Giron.mp4";  
                     labelGraf = ["Hab. Simples", "Hab. Dobles", "Vista al Rio", "Internas"];
                     datos     = [400, 200,120, 200];
 					datos1     = [300, 250,180, 220];
@@ -128,14 +131,14 @@ function actualizar_cuadros(cuadro)
                     //alert(pathVideo);                
                    
                   }else if  (cuadro== "Sur"){
-                    pathVideo = "static/perfiles/videos/CAMPUS_SUR.mp4"; 
+                    pathVideo = "static/perfiles/videos/Sur.mp4"; 
                     labelGraf = ["Arte", "Cultura", "Antiguedades"];
                     datos     = [2000, 5267, 734];
 					datos1     = [1300, 2467, 1534];
                     titulo    = 'Estadisticas de las Visitas en el Museo General de Guayaquil'; 
                     //alert(pathVideo);  
                    }else if (cuadro=="Centenario") {
-                    pathVideo =  "static/perfiles/videos/CAMPUS_CENTENARIO.mp4";
+                    pathVideo =  "static/perfiles/videos/Centenario.mp4";
                     labelGraf = ["Grado", "Posgrado", "Formación Continua", "Cisco"];
                     datos     = [5000, 1000, 500, 400];
 					datos1     = [3000, 1500, 800, 2450];
@@ -146,7 +149,7 @@ function actualizar_cuadros(cuadro)
        }
 	   else
 	   {
-         pathVideo =  " ";
+                        pathVideo =  " ";
        }
 	   mostrar_video(pathVideo);
 	   pintar_cuadro1(labelGraf,datos,titulo);
@@ -158,25 +161,30 @@ function actualizar_cuadros(cuadro)
 function initMap() {
 	var map;
     var myLatLng = {
-        lat: -2.1843405,
-        lng: -79.8770334
+        lat: -1.6598254,
+        lng: -74.8313854
     };
     map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
-        zoom: 14
+        zoom: 6
     });
 				
-	var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
-	addMarker(pos1,map,"EL Vecino","Sitio turistico Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	//var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
 				
-	var pos2 = {lat:-2.179344,lng:-79.875692}; //posicion del marcador
-	addMarker(pos2,map,"El Girón","Hotel Wyndham $143"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	var pos1 = {lat:-2.8863481,lng:-78.9914571}; //posicion del marcador
+	addMarker(pos1,map,"El Vecino","UPS Cuenca - Campus El Vecino"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
-	var pos3 = {lat:-2.183074,lng:-79.877357}; //posicion del marcador
-	addMarker(pos3,map,"Sur","Museo de los Bomberos"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	//var pos2 = {lat:-2.179344,lng:-79.875692}; //posicion del marcador
+    var pos2 = {lat:-0.2078324,lng:-78.4877541}; //posicion del marcador
+    addMarker(pos2,map,"El Giron","UPS Quito - Campus El Girón"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
-	var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
-	addMarker(pos4,map,"Centenario","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+	//var pos3 = {lat:-2.183074,lng:-79.877357}; //posicion del marcador
+    var pos3 = {lat:-0.2825637,lng:-78.5500225}; //posicion del marcador
+    addMarker(pos3,map,"Sur","UPS Quito - Campus Sur"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+	//var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
+    var pos4 = {lat:-2.5532183,lng:-79.7181717}; //posicion del marcador
+    addMarker(pos4,map,"Centenario","UPS Guayaquil - Campus Centenario"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
 				
 	function addMarker(location, map,etiq,titulo1) {
 		var marker = new google.maps.Marker({
