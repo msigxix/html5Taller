@@ -1,11 +1,14 @@
 {% extends "base.html" %} {% block title %}Ingreso de Carreras{% endblock %} {% block content %}
-
+<div class="12u">
+    <div class="box">
+    <center><h2>Ingresos de Carreras</h2></center>
 <form method='POST'>
     {% csrf_token %}
 
     <table>{{ form.as_table }}</table>
 
-    <button type="submit">Guardar</button>
+    <button type="submit" class="button special">Guardar</button>
 </form>
-
+</div>
+</div>
 {% endblock %}

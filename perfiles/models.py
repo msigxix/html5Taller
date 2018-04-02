@@ -53,12 +53,22 @@ class carreras (models.Model):
     car_nombre= models.CharField(max_length=50)
     id_campus = models.ForeignKey(campus, on_delete=models.CASCADE)
     
-    
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return self.car_nombre   
     
     
 class periodoslectivos (models.Model):
     id_periodo = models.AutoField(primary_key=True)
     per_descripcion= models.CharField(max_length=50)
+
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return self.per_descripcion
     
 class estudiantesresumen (models.Model):
     id_estudianter = models.AutoField(primary_key=True)

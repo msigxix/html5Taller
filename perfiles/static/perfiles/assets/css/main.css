@@ -3035,7 +3035,7 @@
 		background-repeat: repeat,							no-repeat;
 		background-size: auto,							cover;
 		color: #fff;
-		padding: 12em 0 20em 0;
+		padding: 0em 0 15em 0;
 		text-align: center;
 	}
 
@@ -3246,7 +3246,7 @@
 		/* Banner */
 
 			#banner {
-				padding: 10em 0 18em 0;
+				padding: 0em 0 15em 0;
 			}
 
 	}

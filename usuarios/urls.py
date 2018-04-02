@@ -17,6 +17,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 from perfiles.forms import campusform 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
 
 
 urlpatterns = [
@@ -30,13 +32,14 @@ urlpatterns = [
     url(r'^$', BienvenidaView.as_view(), name='bienvenida'),
     url(r'^registrate/$', SignUpView.as_view(template_name="Registro.html"), name='sign_up'),
     url(r'^inicia-sesion/$', SignInView.as_view(), name='sign_in'),
+    #url(r'^inicia-sesion/$', login, {'template_name:iniciar_sesion.html'}, name='sign_in'),    
     url(r'^cerrar-sesion/$', SignOutView.as_view(), name='sign_out'),
-    url(r'^campus-form/$', campus_view, name='campus_crear'),
-    url(r'^campus-list/$', CampusVista.as_view(), name='campus_ver'),
-    url(r'^carreras-form/$', carreras_view, name='carreras_crear'),
-    url(r'^periodoslectivos-form/$', periodoslectivos_view, name='periodoslectivos_crear'),
-    url(r'^estudiantesresumen-form/$', estudiantesresumen_view, name='estudiantesresumen_crear'),
-    url(r'^asignaturasresumen-form/$', asignaturasresumen_view, name='asignaturasresumen_crear'),
+    url(r'^campus-form/$', login_required(campus_view), name='campus_crear'),
+    url(r'^campus-list/$', login_required(CampusVista.as_view()), name='campus_ver'),
+    url(r'^carreras-form/$', login_required(carreras_view), name='carreras_crear'),
+    url(r'^periodoslectivos-form/$', login_required(periodoslectivos_view), name='periodoslectivos_crear'),
+    url(r'^estudiantesresumen-form/$', login_required(estudiantesresumen_view), name='estudiantesresumen_crear'),
+    url(r'^asignaturasresumen-form/$', login_required(asignaturasresumen_view), name='asignaturasresumen_crear'),
     #asignaturasresumen_view
     #periodoslectivos
 ]

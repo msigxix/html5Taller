@@ -1,117 +1,127 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	  
+
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-		
-			{% load static %}
-		<link rel="stylesheet" type="text/css" href={% static "perfiles/assets/css/main.css" %} />
-				
-		
-		
-		
-	
-	{% load static %}
-	<!-- 
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href={% static "perfiles/assets/css/main.css" %} /> 
+       {% load static %}
+    <!-- 
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/style.css" %} />
 	 -->
-	{% load static %}
-	<!-- 
+    {% load static %}
+    <!-- 
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/styleRegistro.css" %} />
 	 -->
-	{% load static %}
-  <!-- 
+    {% load static %}
+    <!-- 
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/styleclearnav.css" %} />
- 	 -->	
-    <style>
+ 	 -->
+ 	 
+ 	 {% load static %}
+    <script src={% static "perfiles/jquery-3.3.1.min.js" %}></script>
+    {% load static %}
+    <script src={% static "perfiles/Chart.min.js" %}></script>
+    {% load static %}
+     
+    <script src={% static "perfiles/jvs.js" %}></script>
     
-    body, html { height:100%; 
-	margin:0; 
-	padding:0;	
-	width:100%; 
-	
-	}
-        #grande{ border:1px solid white;
-	width:99%;
-	height:99%;    
-	margin:auto;     
-	
-	
-	}
+    {% load static %}
+    <script src={% static "perfiles/assets/js/jquery.dropotron.min.js" %}></script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/jquery.scrollgress.min.js" %}></script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/skel.min.js" %}>
+    </script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/util.js" %}>
+    </script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/main.js" %}>
+    </script>
+
+
+    {% load static %}
+    <script src={% static "perfiles/valida.2.1.6.min.js" %}></script>
+
+    {% load static %}
+    <script src={% static "perfiles/validator.min.js" %}></script>
+
+    {% load static %}
+    <script src={% static "perfiles/index.js" %}></script>
+ 	
+ 	<style>
+    
         
-          #map {
-          	
-          	border: 1px solid gray;
-        	width: 49.5%;
-        	display: inline-block;
-        	margin:auto;
-            height: 49.5%;
-           
-             
+        
+        #grande {
             
-       }
+            width: 99%;
+            height: 99%;
+            margin: auto;
+        }
+        
+        #map {
+            
+            width: 50%;
+            display: inline-block;
+            margin: auto;
+            height: 351px;
+            
+        }
         
         #video {
-        	
-            border: 1px solid blue;
-            width: 49.5%;
+            
+            width: 50%;
             display: inline-block;
-            height: 49.5%;
            
-             
+            height: 50%;
         }
         
         #cuadro1 {
-        	
-            border: 1px solid blue;
-            width: 49.5%;
+            
+            width: 50%;
             display: inline-block;
-            height: 49.5%;
-            
-            
+            height: 50%;
         }
         
         #cuadro2 {
-        	
-            border: 1px solid blue;
-            width: 49.5%;
-            display: inline-block;
-            height: 49.5%;
             
-              
+            width: 50%;
+            display: inline-block;
+            height: 50%;
         }
-         
-        
     </style>
 
-    </head>
-<body>
+</head>
+
+<body class="landing">
 
 
-{% if user.is_authenticated %}
-	
-<div id="page-wrapper">
+    {% if user.is_authenticated %}
 
-			<!-- Header -->
-				<header id="header">
-					<h2><a href="{% url 'bienvenida' %}">Estadísticas de Estudiantes Universitarios</a></h2>
-					
-					<nav id="nav">
-						<ul>
-							<li><a href="{% url 'bienvenida' %}">Inicio</a></li>
-							<li>
-								<a href="#" class="icon fa-angle-down">Ingreso de Datos</a>
-								<ul>
-									<li><a href="{% url 'campus_crear' %}">de Campus</a></li>
-									<li><a href="{% url 'carreras_crear' %}">de Carreras</a></li>
-									<li><a href="{% url 'periodoslectivos_crear' %}">de Períodos Lectivos</a></li>
-									<li><a href="{% url 'estudiantesresumen_crear' %}">de Resumen Estudiantes</a></li>
-									<li><a href="{% url 'asignaturasresumen_crear' %}">de Resumen Asignaturas</a></li>
-									
-									<!--
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="{% url 'bienvenida' %}">Estadísticas de Estudiantes Universitarios</a></h1>
+
+            <nav id="nav">
+                <ul>
+                    <li><a href="{% url 'bienvenida' %}">Inicio</a></li>
+                    <li>
+                        <a href="#" class="icon fa-angle-down">Ingreso de Datos</a>
+                        <ul>
+                            <li><a href="{% url 'campus_crear' %}">de Campus</a></li>
+                            <li><a href="{% url 'carreras_crear' %}">de Carreras</a></li>
+                            <li><a href="{% url 'periodoslectivos_crear' %}">de Períodos Lectivos</a></li>
+                            <li><a href="{% url 'estudiantesresumen_crear' %}">de Resumen Estudiantes</a></li>
+                            <li><a href="{% url 'asignaturasresumen_crear' %}">de Resumen Asignaturas</a></li>
+
+                            <!--
 									<li>
 										<a href="#">Submenu</a>
 										<ul>
@@ -122,37 +132,39 @@
 										</ul>
 									</li>
 									-->
-								</ul>
-							</li>
-							<li><a href="generic.html">Acerca de</a></li>
-							<li><a href="contact.html">Contáctanos</a></li>
-							
-							<li><a href="{% url 'sign_out' %}" class="button">Cerrar Sesión: {{ user.username }}</a></li>
-						</ul>
-					</nav>
-				</header>	
+                        </ul>
+                    </li>
+                    <li><a href="generic.html">Acerca de</a></li>
+                    <li><a href="contact.html">Contáctanos</a></li>
+
+                    <li><a href="{% url 'sign_out' %}" class="button">Cerrar Sesión: {{ user.username }}</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="banner">
 					
-	<hr>	
-</div>		
-		{% else %}
+		</section>
+    <section id="main" class="container">
+    <div class="row">
+    {% else %}
 
-<div id="page-wrapper">
+    <div id="page-wrapper">
+	
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="{% url 'bienvenida' %}">Estadísticas de Estudiantes Universitarios</h1></a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="{% url 'bienvenida' %}">Inicio</a></li>
+                    <li><a href="generic.html">Acerca de</a></li>
+                    <li><a href="contact.html">Contáctanos</a></li>
+                    <li>
+                        <a href="#" class="icon fa-angle-down">Iniciar Sesión</a>
+                        <ul>
+                            <li><a href="{% url 'sign_in' %}">Ingresar</a></li>
+                            <li><a href="{% url 'sign_up' %}">Registrarse</a></li>
 
-			<!-- Header -->
-				<header id="header">
-					<h2><a href="{% url 'bienvenida' %}">Estadísticas de Estudiantes Universitarios</a></h2>
-					<nav id="nav">
-						<ul>
-							<li><a href="{% url 'bienvenida' %}">Inicio</a></li>
-							<li><a href="generic.html">Acerca de</a></li>
-							<li><a href="contact.html">Contáctanos</a></li>
-							<li>
-								<a href="#" class="icon fa-angle-down">Iniciar Sesión</a>
-								<ul>
-									<li><a href="{% url 'sign_in' %}">Ingresar</a></li>
-									<li><a href="{% url 'sign_up' %}">Registrarse</a></li>
-									
-									<!--
+                            <!--
 									<li>
 										<a href="#">Submenu</a>
 										<ul>
@@ -163,66 +175,46 @@
 										</ul>
 									</li>
 									-->
-								</ul>
-							</li>
-							<!-- <li><a href="#" class="button">Sign Up</a></li> -->
-						</ul>
-					</nav>
-				</header>
-		
-	<hr>
-</div>		
-		{% endif %} 
-
-	
-    {% block content %}
-
-    {% endblock content %}
+                        </ul>
+                    </li>
+                    <!-- <li><a href="#" class="button">Sign Up</a></li> -->
+                </ul>
+            </nav>
+        </header>
+       <section id="banner">
+					
+		</section>
+        <section id="main" class="container">
+        <div class="row">
+        
+   
     
-	<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="#">HTML5 - Django</a></li>
-					</ul>
-	</footer>
+		    {% endif %} 
+		    {% block content %}
+		     
+		    {% endblock content %}
+			</div>
+        </section>
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+            <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li>Design: <a href="#">HTML5 - Django</a></li>
+        </ul>
+    </footer>
 
-	
-	{% load static %}
-	<script src="{% static "perfiles/jquery-3.3.1.min.js" %}"></script>
-	{% load static %}
-				<script src="{% static "perfiles/jvs.js" %}"></script>
-	{% load static %}
-		<script src={% static "perfiles/assets/js/jquery.dropotron.min.js" %}></script>
-	{% load static %}
-	<script src="{% static "perfiles/assets/js/jquery.scrollgress.min.js" %}"></script>
-	{% load static %}
-		<script src={% static "perfiles/assets/js/skel.min.js" %}>	</script>	
-	{% load static %}
-		<script src={% static "perfiles/assets/js/util.js" %}>	</script>
-	{% load static %}
-		<script src={% static "perfiles/assets/js/main.js" %}>	</script>			
-	
-	
-	{% load static %}
-	<script src="{% static "perfiles/valida.2.1.6.min.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/validator.min.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/index.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/Chart.min.js" %}"></script>
-	{% load static %}
-	<!-- 
+ </div>
+    
+    
+    {% load static %}
+    <!-- 
 	<script>
 		$(function() {
 			initMap();
@@ -230,4 +222,5 @@
 		</script>
 	 -->
 </body>
+
 </html>

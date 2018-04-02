@@ -101,13 +101,15 @@ class estudiantesresumenform (forms.ModelForm):
                 'id_estudianter',
                 'est_inscritos',
                 'est_prematriculados',
+                'est_matriculados',
                 'id_carrera',
                 'id_periodo',
             ]
         labels = {
                 'id_estudianter':'Codigo Estudiante Resumen',
                 'est_inscritos':'Numero de inscritos',
-                'est_prematriculados' :'Numero de matriculados',
+                'est_prematriculados' :'Numero de pre-matriculados',
+                'est_matriculados':'Numero de Matriculados',
                 'id_carrera' :'Codigo de la Carrera',
                 'id_periodo' :'Codigo del periodo',
 
@@ -115,6 +117,7 @@ class estudiantesresumenform (forms.ModelForm):
         widgets = {
             'est_inscritos': forms.TextInput(attrs={'class': 'form-control'}),
             'est_prematriculados': forms.TextInput(attrs={'class': 'form-control'}),
+            'est_matriculados': forms.TextInput(attrs={'class': 'form-control'}),
             'id_carrera': forms.Select(attrs={'class': 'form-control'}),
             'id_periodo': forms.Select(attrs={'class': 'form-control'}),
             }
