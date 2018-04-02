@@ -1,119 +1,226 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-	
-    <meta charset="UTF-8">
+
     <title>{% block title %}{% endblock %}</title>
-	
-	{% load static %}
-	<!-- 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href={% static "perfiles/assets/css/main.css" %} /> 
+       {% load static %}
+    <!-- 
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/style.css" %} />
 	 -->
-	{% load static %}
+    {% load static %}
+    <!-- 
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/styleRegistro.css" %} />
-	
-	{% load static %}
+	 -->
+    {% load static %}
+    <!-- 
 	<link rel='stylesheet' type='text/css' href={% static "perfiles/styleclearnav.css" %} />
-	
-	{% load static %}
-	<script src="{% static "perfiles/jquery-3.3.1.min.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/valida.2.1.6.min.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/validator.min.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/index.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/Chart.min.js" %}"></script>
-	
-	{% load static %}
-	<script src="{% static "perfiles/jvs.js" %}"></script>
-	
-	<!--  
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	-->
+ 	 -->
+ 	 
+ 	 {% load static %}
+    <script src={% static "perfiles/jquery-3.3.1.min.js" %}></script>
+    {% load static %}
+    <script src={% static "perfiles/Chart.min.js" %}></script>
+    {% load static %}
+     
+    <script src={% static "perfiles/jvs.js" %}></script>
+    
+    {% load static %}
+    <script src={% static "perfiles/assets/js/jquery.dropotron.min.js" %}></script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/jquery.scrollgress.min.js" %}></script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/skel.min.js" %}>
+    </script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/util.js" %}>
+    </script>
+    {% load static %}
+    <script src={% static "perfiles/assets/js/main.js" %}>
+    </script>
 
-    <style type="text/css">
-        #grande3 {
-            border: 1px solid black;
-            /* width:100%;
-         height: auto;  */
-        }
+
+    {% load static %}
+    <script src={% static "perfiles/valida.2.1.6.min.js" %}></script>
+
+    {% load static %}
+    <script src={% static "perfiles/validator.min.js" %}></script>
+
+    {% load static %}
+    <script src={% static "perfiles/index.js" %}></script>
+ 	
+ 	<style>
+    
         
-        #menu3 {
-            border: 1px solid gray;
-            width: 100%;
-            height: 10%;
+        
+        #grande {
+            
+            width: 99%;
+            height: 99%;
+            margin: auto;
         }
         
         #map {
-            border: 1px solid blue;
-            width: 49.5%;
-            height: 45%;
+            
+            width: 50%;
             display: inline-block;
+            margin: auto;
+            height: 351px;
+            
         }
         
         #video {
-            border: 1px solid blue;
-            width: 49.5%;
-            height: 45%;
+            
+            width: 50%;
             display: inline-block;
+           
+            height: 50%;
         }
         
         #cuadro1 {
-            border: 1px solid blue;
-            width: 49.5%;
-            height: 45%;
+            
+            width: 50%;
             display: inline-block;
+            height: 50%;
         }
         
         #cuadro2 {
-            border: 1px solid blue;
-            width: 49.5%;
-            height: 45%;
+            
+            width: 50%;
             display: inline-block;
+            height: 50%;
         }
-         
-        
     </style>
 
-    </head>
-<body>
+</head>
 
-	{% block header %}
+<body class="landing">
+
+
+    {% if user.is_authenticated %}
+
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="{% url 'bienvenida' %}">Estadísticas de Estudiantes Universitarios</a></h1>
+
+            <nav id="nav">
+                <ul>
+                    <li><a href="{% url 'bienvenida' %}">Inicio</a></li>
+                    <li>
+                        <a href="#" class="icon fa-angle-down">Ingreso de Datos</a>
+                        <ul>
+                            <li><a href="{% url 'campus_crear' %}">de Campus</a></li>
+                            <li><a href="{% url 'carreras_crear' %}">de Carreras</a></li>
+                            <li><a href="{% url 'periodoslectivos_crear' %}">de Períodos Lectivos</a></li>
+                            <li><a href="{% url 'estudiantesresumen_crear' %}">de Resumen Estudiantes</a></li>
+                            <li><a href="{% url 'asignaturasresumen_crear' %}">de Resumen Asignaturas</a></li>
+
+                            <!--
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+									-->
+                        </ul>
+                    </li>
+                    <li><a href="generic.html">Acerca de</a></li>
+                    <li><a href="contact.html">Contáctanos</a></li>
+
+                    <li><a href="{% url 'sign_out' %}" class="button">Cerrar Sesión: {{ user.username }}</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section id="banner">
+					
+		</section>
+    <section id="main" class="container">
+    <div class="row">
+    {% else %}
+
+    <div id="page-wrapper">
 	
-	<div id="wrapper">
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="{% url 'bienvenida' %}">Estadísticas de Estudiantes Universitarios</h1></a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="{% url 'bienvenida' %}">Inicio</a></li>
+                    <li><a href="generic.html">Acerca de</a></li>
+                    <li><a href="contact.html">Contáctanos</a></li>
+                    <li>
+                        <a href="#" class="icon fa-angle-down">Iniciar Sesión</a>
+                        <ul>
+                            <li><a href="{% url 'sign_in' %}">Ingresar</a></li>
+                            <li><a href="{% url 'sign_up' %}">Registrarse</a></li>
+
+                            <!--
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+									-->
+                        </ul>
+                    </li>
+                    <!-- <li><a href="#" class="button">Sign Up</a></li> -->
+                </ul>
+            </nav>
+        </header>
+       <section id="banner">
+					
+		</section>
+        <section id="main" class="container">
+        <div class="row">
+        
+   
+    
+		    {% endif %} 
+		    {% block content %}
+		     
+		    {% endblock content %}
+			</div>
+        </section>
+    <footer id="footer">
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+            <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li>Design: <a href="#">HTML5 - Django</a></li>
+        </ul>
+    </footer>
+
+ </div>
+    
+    
+    {% load static %}
     <!-- 
-  <h1><strong>ClearNav</strong> responsive navigation</h1>
-   -->
-  <nav role="navigation" id="access">
-    <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
-    <ul id="menu">
-      <!--  <li class="active"><a class="icon-home" href="#accueil">Inicio</a></li><!-- whitespace -->
-      			    <li><a class="icon-home" href="{% url 'bienvenida' %}">Inicio</a></li><!-- whitespace
-                --><li><a class="icon-group" href="#quisommesnous">Acerca De</a></li><!-- whitespace
-                --><li><a class="icon-leaf" href="#services">Oferta Académica</a></li><!-- whitespace
-                --><li><a class="icon-picture" href="#portfolio">Prensa UPS</a></li><!-- whitespace
-                --><li><a class="icon-envelope-alt" href="#contact">Contáctanos</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_up' %}">Regístrate</a></li>
-                <li><a class="icon-envelope-alt" href="{% url 'sign_in' %}">Inicia Sesión</a></li>
-          </ul>
-      </nav>
-</div>
-	
-	{% endblock %}
-
-    {% block content %}
-
-    {% endblock content %}
-    
-	{% block footer %}
-	
-	{% endblock %}
-    
+	<script>
+		$(function() {
+			initMap();
+			});
+		</script>
+	 -->
 </body>
+
 </html>

@@ -1,3 +1,41 @@
+function initMap() {
+	var map;
+    var myLatLng = {
+        lat: -2.1843405,
+        lng: -79.8770334
+    };
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        zoom: 14
+    });
+				
+	var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
+	addMarker(pos1,map,"Malecon","Sitio turistico Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+	var pos2 = {lat:-2.179344,lng:-79.875692}; //posicion del marcador
+	addMarker(pos2,map,"Wyndham","Hotel Wyndham $143"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+	var pos3 = {lat:-2.183074,lng:-79.877357}; //posicion del marcador
+	addMarker(pos3,map,"Museo","Museo de los Bomberos"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+	var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
+	addMarker(pos4,map,"ESPOL","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
+				
+	function addMarker(location, map,etiq,titulo1) {
+		var marker = new google.maps.Marker({
+		position: location,
+			title: titulo1,
+			label: etiq,
+			map: map
+		});
+	
+		marker.addListener('click', function()
+		{
+			actualizar_cuadros(marker.label);
+		});
+		}
+	}
+
 var datos_c;
 var datos_l;
 var chart_c;
@@ -22,13 +60,6 @@ $(function()
 		});		
   });
 		
-
-
-
-
-		
-
-		
 		
 function mostrar_video(path_video){
 	$(function() {
@@ -42,7 +73,7 @@ function mostrar_video(path_video){
 }
 
 function pintar_cuadro1(labelGraf3,datos3,titulo3){
-	
+	//alert ('entra cuadro 1');
 	new Chart(document.getElementById("doughnut-chart"), {
                 type: 'doughnut',
                 data: {
@@ -64,8 +95,6 @@ function pintar_cuadro1(labelGraf3,datos3,titulo3){
 
 function pintar_cuadro2(labelGraf3,datos3,titulo3)
 {
-	 
-     
             var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
@@ -152,50 +181,9 @@ function actualizar_cuadros(cuadro)
                         pathVideo =  " ";
        }
 	   mostrar_video(pathVideo);
+//alert('llega 299');
 	   pintar_cuadro1(labelGraf,datos,titulo);
 	   pintar_cuadro2(labelGraf,datos1,titulo);	
 	   datos_c=datos1;
 	   datos_l=labelGraf;
-}
-
-function initMap() {
-	var map;
-    var myLatLng = {
-        lat: -2.1843405,
-        lng: -79.8770334
-    };
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLng,
-        zoom: 14
-    });
-				
-	var pos1 = {lat:-2.186040,lng:-79.876558}; //posicion del marcador
-	addMarker(pos1,map,"Malecon","Sitio turistico Malecon 2000"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-	var pos2 = {lat:-2.179344,lng:-79.875692}; //posicion del marcador
-	addMarker(pos2,map,"Wyndham","Hotel Wyndham $143"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-	var pos3 = {lat:-2.183074,lng:-79.877357}; //posicion del marcador
-	addMarker(pos3,map,"Museo","Museo de los Bomberos"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-	var pos4 = {lat:-2.183782,lng:-79.877464}; //posicion del marcador
-	addMarker(pos4,map,"ESPOL","Universidad ESPOL"); //añadimos el marcador con una etiqueta y un texto a mostrar de ayuda
-				
-	function addMarker(location, map,etiq,titulo1) {
-		var marker = new google.maps.Marker({
-		position: location,
-			title: titulo1,
-			label: etiq,
-			map: map
-		});
-	
-		marker.addListener('click', function()
-		{
-			actualizar_cuadros(marker.label);
-		});
-	}
-	
-	//mostrar_video("static/perfiles/videos/ESPOL.mp4");
-	//pintar_cuadro1(["Grado", "Posgrado", "Formación Continua", "Cisco"],[5000, 1000, 500, 400],);
-	//pintar_cuadro2(["Grado", "Posgrado", "Formación Continua", "Cisco"],[3000, 1500, 800, 2450],'Número de Estudiantes en la ESPOL año 2018');
 }
