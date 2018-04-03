@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Ingreso de estudiantes Resumen{% endblock %} {% block content %}
+<div class="12u">
+    <div class="box">
+    <center><h2>Ingresos de cantidades estadísticas de estudiantes</h2></center>
+<form method='POST'>
+    {% csrf_token %}
+
+    <table>{{ form.as_table }}</table>
+
+    <button type="submit" class="button special">Guardar</button>
+</form>
+</div>
+</div>
+
+{% endblock %}
