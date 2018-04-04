@@ -10,10 +10,9 @@ from django.contrib.contenttypes import fields
 from pip._vendor.webencodings import labels
 from django.urls import reverse
 
+
 class SignUpForm(UserCreationForm):
-    def get_absolute_url(self):
-            return reverse('bienvenida', kwargs={'id': self.object.id})
-    
+        
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}), max_length=32, help_text='First name')
     last_name=forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}), max_length=32, help_text='Last name')
