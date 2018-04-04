@@ -14,6 +14,7 @@ from django.views.generic.detail import DetailView
 from perfiles.models import carreras, campus
 from django.template.context_processors import request
 from perfiles.forms import campusform, carrerasform, periodoslectivosform, estudiantesresumenform, asignaturasresumenform
+from django.urls import reverse_lazy
 
 
 class SignUpView(CreateView):
@@ -22,7 +23,7 @@ class SignUpView(CreateView):
     
     template_name = 'perfiles/Registro.html'
     form_class = SignUpForm
-    
+    success_url = reverse_lazy('sign_in')
     
     
 
