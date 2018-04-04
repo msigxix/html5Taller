@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from .models import campus 
 from .models import Perfil
 from .models import carreras, periodoslectivos, estudiantesresumen, asignaturasresumen
-from blivetgui.dialogs import widgets
 from django.forms import ModelForm
 from django.contrib.contenttypes import fields
 from pip._vendor.webencodings import labels
