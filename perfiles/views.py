@@ -35,7 +35,7 @@ def form_valid(self, form):
         password = form.cleaned_data.get('password1')
         usuario = authenticate(username=usuario, password=password)
         login(self.request, usuario)
-        return redirect('/')
+        return redirect('bienvenida')
 
 class BienvenidaView(TemplateView):
    template_name = 'perfiles/index.html'
