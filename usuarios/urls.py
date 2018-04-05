@@ -25,11 +25,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-from perfiles.views import SignUpView, BienvenidaView, SignInView, SignOutView , CampusVista, campus_view, carreras_view, periodoslectivos_view, estudiantesresumen_view, asignaturasresumen_view
+from perfiles.views import SignUpView, BienvenidaView, InicioView, SignInView, SignOutView , CampusVista, campus_view, carreras_view, periodoslectivos_view, estudiantesresumen_view, asignaturasresumen_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', BienvenidaView.as_view(), name='bienvenida'),
+
+    url(r'^inicio/$', InicioView.as_view(), name='inicio'),
+
     url(r'^registrate/$', SignUpView.as_view(), name='sign_up'),
     url(r'^inicia-sesion/$', SignInView.as_view(), name='sign_in'),
     #url(r'^inicia-sesion/$', login, {'template_name:iniciar_sesion.html'}, name='sign_in'),    

@@ -43,6 +43,11 @@ class BienvenidaView(TemplateView):
    
 from django.contrib.auth.views import LoginView
 
+class InicioView(TemplateView):
+   template_name = 'perfiles/inicio.html'
+   
+from django.contrib.auth.views import LoginView
+
 class SignInView(LoginView):
     template_name = 'perfiles/iniciar_sesion.html'
 
