@@ -51,7 +51,7 @@ class campus (models.Model):
 class carreras (models.Model):
     id_carrera = models.AutoField(primary_key=True)
     car_nombre= models.CharField(max_length=50)
-    id_campus = models.ForeignKey(campus, on_delete=models.CASCADE)
+    
     
     def __str__(self):
         """
@@ -75,6 +75,7 @@ class estudiantesresumen (models.Model):
     est_inscritos= models.IntegerField()
     est_prematriculados = models.IntegerField()
     est_matriculados = models.IntegerField()
+    id_campus = models.ForeignKey(campus, on_delete=models.CASCADE)
     id_carrera = models.ForeignKey(carreras, on_delete=models.CASCADE)
     id_periodo = models.ForeignKey(periodoslectivos, on_delete=models.CASCADE)
     
@@ -84,12 +85,32 @@ class asignaturasresumen (models.Model):
     asi_reprobados = models.IntegerField()
     asi_anulados = models.IntegerField()
     asi_retiros = models.IntegerField()
+    id_campus = models.ForeignKey(campus, on_delete=models.CASCADE)
     id_carrera = models.ForeignKey(carreras, on_delete=models.CASCADE)
     id_periodo = models.ForeignKey(periodoslectivos, on_delete=models.CASCADE)
     
+class consultatablas(models.Manager):
+    def with_counts(self):
+        from django.db import connection
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                Select cam_nombre campus,car_nombre carrera,per_descripcion periodo, est_inscritos inscritos, est_prematriculados prematriculados, est_matriculados matriculados from perfiles_campus, perfiles_carreras, perfiles_periodoslectivos, perfiles_estudiantesresumen where id_campus = id_campus_id and id_periodo = id_periodo_id and id_carrera = id_carrera_id and id_periodo = id_periodo_id""")
+            result_list = []
+            for row in cursor.fetchall():
+                p = self.model(campus=row[0], carrera=row[1], periodo=row[2])
+                p.num_responses = row[3]
+                result_list.append(p)
+        return result_list
+    
+from django.db import connection
 
-    
-    
+def my_sql(self):
+    with connection.cursor() as cursor:
+        cursor.execute("UPDATE bar SET foo = 1 WHERE baz = %s", [self.baz])
+        cursor.execute("SELECT foo FROM bar WHERE baz = %s", [self.baz])
+        row = cursor.fetchone()
+
+    return row    
     
     
     
