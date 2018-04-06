@@ -62,16 +62,16 @@ class carrerasform (forms.ModelForm):
         fields = [
                 'id_carrera',
                 'car_nombre',
-                'id_campus',
+                #'id_campus',
             ]
         labels = {
                 'id_carrera':'Codigo',
                 'car_nombre':'Nombre de la carrera',
-                'id_campus' :'Id Campus',
+                #'id_campus' :'Id Campus',
             }
         widgets = {
             'car_nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'id_campus': forms.Select(attrs={'class': 'form-control'}),
+            #'id_campus': forms.Select(attrs={'class': 'form-control'}),
             }
 
 #periodoslectivos
@@ -104,6 +104,7 @@ class estudiantesresumenform (forms.ModelForm):
                 'est_inscritos',
                 'est_prematriculados',
                 'est_matriculados',
+                'id_campus',
                 'id_carrera',
                 'id_periodo',
             ]
@@ -120,6 +121,7 @@ class estudiantesresumenform (forms.ModelForm):
             'est_inscritos': forms.TextInput(attrs={'class': 'form-control'}),
             'est_prematriculados': forms.TextInput(attrs={'class': 'form-control'}),
             'est_matriculados': forms.TextInput(attrs={'class': 'form-control'}),
+            'id_campus': forms.Select(attrs={'class': 'form-control'}),
             'id_carrera': forms.Select(attrs={'class': 'form-control'}),
             'id_periodo': forms.Select(attrs={'class': 'form-control'}),
             }
@@ -135,6 +137,7 @@ class asignaturasresumenform (forms.ModelForm):
                 'asi_reprobados',
                 'asi_anulados',
                 'asi_retiros',
+                'id_campus',
                 'id_carrera',
                 'id_periodo',
             ]
@@ -154,6 +157,7 @@ class asignaturasresumenform (forms.ModelForm):
                 'asi_reprobados':forms.TextInput(attrs={'class': 'form-control'}),
                 'asi_anulados':forms.TextInput(attrs={'class': 'form-control'}),
                 'asi_retiros':forms.TextInput(attrs={'class': 'form-control'}),
+                'id_campus': forms.Select(attrs={'class': 'form-control'}),
                 'id_carrera':forms.Select(attrs={'class': 'form-control'}),
                 'id_periodo':forms.Select(attrs={'class': 'form-control'}),
             }
