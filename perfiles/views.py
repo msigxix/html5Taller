@@ -38,8 +38,23 @@ def form_valid(self, form):
         login(self.request, usuario)
         return redirect('/')
 
+from perfiles.models import estudiantesresumen
+from perfiles.models import asignaturasresumen
+
 class BienvenidaView(TemplateView):
-   template_name = 'perfiles/index.html'
+	template_name = 'perfiles/index.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(BienvenidaView, self).get_context_data(**kwargs)
+		context['cuadro1_info'] = self.cuadro1_informacion()
+		return context
+
+	def cuadro1_informacion(self):
+		info = []
+		temp1 = estudiantesresumen.objects.all()
+		for item in temp1:
+			info.append([item.est_inscritos,item.est_prematriculados,item.est_matriculados,item.id_carrera,item.id_carrera.id_campus,item.id_periodo])
+		return info
    
 from django.contrib.auth.views import LoginView
 
