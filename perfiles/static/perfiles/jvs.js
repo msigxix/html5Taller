@@ -127,7 +127,7 @@ function actualizar_cuadros(cuadro)
 					datos1     = [5247, 3247, 1784, 2484];
                     titulo    = 'UPS Cuenca - Campus El Vecino';
 					titulo1 = 'UPS Cuenca - Campus El Vecino'
-					locacion = 'Cuenca';
+					locacion = 'El Vecino';
 
                    // alert(pathVideo);                  
                    }else if  (cuadro=="El Giron"){
@@ -137,6 +137,7 @@ function actualizar_cuadros(cuadro)
 					datos1     = [300, 250,180, 220];
                     titulo    = '';
 					titulo1    = '';
+					locacion = 'El Giron';
                     //alert(pathVideo);                
                    
                   }else if  (cuadro== "Sur"){
@@ -144,8 +145,9 @@ function actualizar_cuadros(cuadro)
                     labelGraf = ["Arte", "Cultura", "Antiguedades"];
                     datos     = [2000, 5267, 734];
 					datos1     = [1300, 2467, 1534];
-                    titulo    = '';
-					titulo1    = '';
+                    titulo    = 'UPS';
+					titulo1    = 'UPS';
+					locacion = 'Sur';
                     //alert(pathVideo);  
                    }else if (cuadro=="Centenario") {
                     pathVideo =  "static/perfiles/videos/Centenario.mp4";
@@ -154,6 +156,7 @@ function actualizar_cuadros(cuadro)
 					datos1     = [3000, 1500, 800, 2450];
                     titulo    = 'Número de Estudiantes en la ESPOL año 2018';
 					titulo1='UPS Guayaquil - Campus Centenario'
+					locacion = 'Centenario';
        }
 	   else
 	   {
@@ -201,8 +204,8 @@ function actualizar_cuadros(cuadro)
 	   
 	   
 	   mostrar_video(pathVideo);
-	   pintar_cuadro1(labelGraf,dat_apro,dat_rep,dat_anu,dat_ret,titulo);
-	   pintar_cuadro2(labelGraf1,dat_mat,dat_ins,dat_pre,titulo1);	
+	   pintar_cuadro1(labelGraf,dat_apro,dat_rep,dat_anu,dat_ret,'Rendimiento académico');
+	   pintar_cuadro2(labelGraf1,dat_mat,dat_ins,dat_pre,'Estudiantes por Carrera');	
 	   datos_c=datos1;
 	   datos_l=labelGraf;
 }
