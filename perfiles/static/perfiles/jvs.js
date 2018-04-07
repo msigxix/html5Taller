@@ -4,7 +4,8 @@ var chart_c;
 
 $(function() 
   {
-    actualizar_cuadros("El Vecino");
+    //actualizar_cuadros("El Vecino");
+		
 	document.getElementById('addData').addEventListener('click', function() {
 			if (datos_c.length > 0) {
 				var month = "Columna " + (datos_c.length + 1);
@@ -99,20 +100,26 @@ function pintar_cuadro2(labelGraf3,datos3,titulo3)
 			chart_c=myChart;
 }
 
+
 function actualizar_cuadros(cuadro)
 {
 			var pathVideo;
 			var labelGraf;
+			var labelGraf1;
 			var datos;
 			var datos1;
 			var titulo;
+			var titulo1;
+			var locacion;
 			
 			if (cuadro=="El Vecino") {
                     pathVideo = "static/perfiles/videos/Vecino.mp4";
                     labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
                     datos     = [2478, 5267, 734, 784];
-					datos1     = [5247, 3247, 1784, 2484];
+					//datos1     = [5247, 3247, 1784, 2484];
                     titulo    = 'Estadisticas Malecon 2000 en el año 2018';
+					titulo1 = 'UPS Cuenca - Campus El Vecino'
+					locacion = 'Cuenca';
 
                    // alert(pathVideo);                  
                    }else if  (cuadro=="El Giron"){
@@ -134,19 +141,31 @@ function actualizar_cuadros(cuadro)
                     pathVideo =  "static/perfiles/videos/Centenario.mp4";
                     labelGraf = ["Grado", "Posgrado", "Formación Continua", "Cisco"];
                     datos     = [5000, 1000, 500, 400];
-					datos1     = [3000, 1500, 800, 2450];
+					//datos1     = [3000, 1500, 800, 2450];
                     titulo    = 'Número de Estudiantes en la ESPOL año 2018';
-
-                    //alert(pathVideo);  
-
+					titulo1='UPS Guayaquil - Campus Centenario'
        }
 	   else
 	   {
                         pathVideo =  " ";
        }
+	   var j=0;
+	   datos1=[];
+	   labelGraf1=[];
+	   for (i=0;i<campus2.length;i++) {
+		   if (campus2[i]["cam_nombre"]==locacion)
+		   {
+				datos1.push(matriculados[j]);
+				labelGraf1.push(carrera2[j]);
+				j++;
+		   }
+		}
+	   
+	   
+	   
 	   mostrar_video(pathVideo);
 	   pintar_cuadro1(labelGraf,datos,titulo);
-	   pintar_cuadro2(labelGraf,datos1,titulo);	
+	   pintar_cuadro2(labelGraf1,datos1,titulo1);	
 	   datos_c=datos1;
 	   datos_l=labelGraf;
 }

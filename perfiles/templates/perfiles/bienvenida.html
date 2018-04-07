@@ -5,6 +5,8 @@
 {% if user.is_authenticated %}
 <h1>Hola {{ user.username }}</h1>
 
+
+
 <div id="wrapper">
     <nav role="navigation" id="access">
         <a class="skip-link icon-reorder" title="Accéder au menu" href="#menu">Menu</a>
@@ -88,6 +90,14 @@
 
 {% block content %} 
 
+<script type="text/javascript">
+	var campus2={{campus|safe}}
+	var inscritos={{inscritos|safe}}
+	var prematriculados={{prematriculados|safe}}
+	var matriculados={{matriculados|safe}}
+	var carrera2={{carrera|safe}}
+</script>
+
 {% if user.is_authenticated %}
 <!-- 
         <h1>Hola {{ user.username }}</h1>
@@ -139,13 +149,7 @@
     <button id="removeData">Remover Datos</button>
 </section>
 
-<script type="text/javascript">
-	var campus= {{campus|safe}}
-	var inscritos={{inscritos|safe}}
-	var prematriculados={{prematriculados|safe}}
-	var matriculados={{matriculados|safe}}
-	var carrera={{carrera|safe}}
-</script>
+<
 
 {% else %} 
 
