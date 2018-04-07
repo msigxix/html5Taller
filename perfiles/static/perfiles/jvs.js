@@ -35,16 +35,16 @@ function mostrar_video(path_video){
 	})
 }
 
-function pintar_cuadro1(labelGraf3,datos3,titulo3){
+function pintar_cuadro1(labelGraf3,apro,repr,anul,reti,titulo3){
 	
 	new Chart(document.getElementById("doughnut-chart"), {
                 type: 'doughnut',
                 data: {
                     labels: labelGraf3,
                     datasets: [{
-                        label: "Estadisticas",
+                        label: "Aprobados",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        data: datos3
+                        data: apro
                     }]
                 },
                 options: {
@@ -125,7 +125,7 @@ function actualizar_cuadros(cuadro)
                     labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
                     datos     = [2478, 5267, 734, 784];
 					datos1     = [5247, 3247, 1784, 2484];
-                    titulo    = 'Estadisticas Malecon 2000 en el año 2018';
+                    titulo    = 'UPS Cuenca - Campus El Vecino';
 					titulo1 = 'UPS Cuenca - Campus El Vecino'
 					locacion = 'Cuenca';
 
@@ -135,7 +135,8 @@ function actualizar_cuadros(cuadro)
                     labelGraf = ["Hab. Simples", "Hab. Dobles", "Vista al Rio", "Internas"];
                     datos     = [400, 200,120, 200];
 					datos1     = [300, 250,180, 220];
-                    titulo    = 'Habitaciones en Hotel Wyndham'; 
+                    titulo    = '';
+					titulo1    = '';
                     //alert(pathVideo);                
                    
                   }else if  (cuadro== "Sur"){
@@ -143,7 +144,8 @@ function actualizar_cuadros(cuadro)
                     labelGraf = ["Arte", "Cultura", "Antiguedades"];
                     datos     = [2000, 5267, 734];
 					datos1     = [1300, 2467, 1534];
-                    titulo    = 'Estadisticas de las Visitas en el Museo General de Guayaquil'; 
+                    titulo    = '';
+					titulo1    = '';
                     //alert(pathVideo);  
                    }else if (cuadro=="Centenario") {
                     pathVideo =  "static/perfiles/videos/Centenario.mp4";
@@ -167,18 +169,39 @@ function actualizar_cuadros(cuadro)
 	   for (i=0;i<campus.length;i++) {
 		   if (campus[i]["cam_nombre"]==locacion)
 		   {
-			    dat_mat.push(matriculados[j]["est_matriculados"]);
-				dat_ins.push(matriculados[j]["est_inscritos"]);
-				dat_pre.push(matriculados[j]["est_prematriculados"]);
+			    dat_mat.push(matriculados[j]);
+				dat_ins.push(inscritos[j]);
+				dat_pre.push(prematriculados[j]);
 				labelGraf1.push(carrera2[j]["car_nombre"]);
+				j++;
+		   }
+		}
+	   alert(dat_mat);
+	   j=0;
+	   var dat_apro=[];
+	   var dat_rep=[];
+	   var dat_anu=[];
+	   var dat_ret=[];
+	   
+	   
+	   labelGraf=[];
+	   for (i=0;i<campus1.length;i++) {
+		   if (campus1[i]["cam_nombre"]==locacion)
+		   {
+			    dat_apro.push(aprobadas[j]);
+				dat_rep.push(reprobados[j]);
+				dat_anu.push(anulados[j]);
+				dat_ret.push(retiros[j]);
+				labelGraf.push(carrera1[j]["car_nombre"]);
 				j++;
 		   }
 		}
 	   
 	   
 	   
+	   
 	   mostrar_video(pathVideo);
-	   pintar_cuadro1(labelGraf,datos,titulo);
+	   pintar_cuadro1(labelGraf,dat_apro,dat_rep,dat_anu,dat_ret,titulo);
 	   pintar_cuadro2(labelGraf1,dat_mat,dat_ins,dat_pre,titulo1);	
 	   datos_c=datos1;
 	   datos_l=labelGraf;
