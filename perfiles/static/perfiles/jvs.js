@@ -58,9 +58,7 @@ function pintar_cuadro1(labelGraf3,datos3,titulo3){
 
 function pintar_cuadro2(labelGraf3,datos3,titulo3)
 {
-	 
-     
-            var ctx = document.getElementById("myChart").getContext('2d');
+	        var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -152,11 +150,11 @@ function actualizar_cuadros(cuadro)
 	   var j=0;
 	   datos1=[];
 	   labelGraf1=[];
-	   for (i=0;i<campus2.length;i++) {
-		   if (campus2[i]["cam_nombre"]==locacion)
+	   for (i=0;i<campus.length;i++) {
+		   if (campus[i]["cam_nombre"]==locacion)
 		   {
-				datos1.push(matriculados[j]);
-				labelGraf1.push(carrera2[j]);
+				datos1.push(matriculados[j]["est_matriculados"]);
+				labelGraf1.push(carrera2[j]["car_nombre"]);
 				j++;
 		   }
 		}
