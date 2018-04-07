@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Estudiantes resumen listado</h1>
+<!--  
+    {% if estudiantesresumen_list %}
+    <ul>
+
+      {% for estudiantesresumen in estudiantesresumen_list %}
+      <li>
+        <h3> {{ estudiantesresumen.est_inscritos }} - {{estudiantesresumen.est_prematriculados}}-
+        {{ estudiantesresumen.est_matriculados }} -  {{ estudiantesresumen.id_campus }} - {{ estudiantesresumen.id_carrera }} - {{ estudiantesresumen.id_periodo }}
+        </h3>
+      </li>
+      {% endfor %}
+
+    </ul>
+      
+    {% else %}
+      <p>No hay Estudiantes Resumenes registrados</p>
+    {% endif %}
+-->      
+    <h2>
+    {% for test in datos %}
+        {{test.id_campus}} {{test.id_carrera}} <br>
+    {% endfor %}
+    Carrera: {{carrera}} 
+    
+    y el Campus: 
+    
+    {{campus}} Inscritos: {{inscritos}}
+    </h2>
+    <input type="button" onclick="miFuncion();" value="Test">
+    <script type="text/javascript">
+    
+	function miFuncion() {
+		var campus= {{campus|safe}}
+		var inscritos={{inscritos|safe}}
+		var campus2=[];
+		for (i=0;i<campus.length;i++) {
+			campus2[i]=campus[0]["cam_nombre"];
+		}
+	   	//alert(campus);
+		//alert(campus[0]["cam_nombre"]);
+		alert(campus2);
+		alert(inscritos);
+		//alert('ok');
+		//alert(mostrarPropiedades(campus,django));
+	}
+	
+	function mostrarPropiedades(objeto, nombreObjeto) {
+		  var resultado = "";
+		  for (var i in objeto) {
+		    if (objeto.hasOwnProperty(i)) {
+		        resultado += nombreObjeto + "." + i + " = " + objeto[i] + "\n";
+		    }
+		  }
+		  return resultado;
+		}
+   	
+<!--
+
+//-->
+</script>       
+{% endblock %}

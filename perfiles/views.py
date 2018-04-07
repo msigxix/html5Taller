@@ -11,10 +11,13 @@ from .models import Perfil
 
 from .forms import SignUpForm 
 from django.views.generic.detail import DetailView
-from perfiles.models import carreras, campus
+from perfiles.models import carreras, campus, estudiantesresumen
 from django.template.context_processors import request
 from perfiles.forms import campusform, carrerasform, periodoslectivosform, estudiantesresumenform, asignaturasresumenform
 from django.urls import reverse_lazy
+import json as simplejson
+from django.shortcuts import render_to_response
+from django.forms.models import model_to_dict
 
 
 class SignUpView(CreateView):
@@ -38,9 +41,106 @@ def form_valid(self, form):
         login(self.request, usuario)
         return redirect('/')
 
+from perfiles.models import estudiantesresumen
+from perfiles.models import asignaturasresumen
+
 class BienvenidaView(TemplateView):
-   template_name = 'perfiles/index.html'
-   
+	template_name = 'perfiles/index.html'
+
+	def get_context_data(self, **kwargs):
+		context = super(BienvenidaView, self).get_context_data(**kwargs)
+		context = self.cuadro1_informacion()
+		#context = self.cuadro2_informacion()
+		return context
+
+	def cuadro1_informacion(self):
+		datos1 = asignaturasresumen.objects.all()
+		aprobados = []
+		reprobados = []
+		anulados=[]
+		retiros=[]
+		campus1=[]
+		carrera1=[]
+		#periodo=[]
+		i = 0
+		
+		for item in datos1:
+			aprobados.append(item.asi_aprobadas)
+			reprobados.append(item.asi_reprobados)
+			anulados.append(item.asi_anulados)
+			retiros.append(item.asi_retiros)
+			campus1.append(model_to_dict(item.id_campus))
+			carrera1.append(model_to_dict(item.id_carrera))
+			#periodo.append(model_to_dict(item.id_periodo))
+            #campus.append(item.id_campus)
+            #carrera.append(item.id_carrera)
+            #periodo.append(item.id_periodo)
+			i +=1
+			
+		aprobados=simplejson.dumps(aprobados)
+		reprobados=simplejson.dumps(reprobados)
+		anulados=simplejson.dumps(anulados)
+		retiros=simplejson.dumps(retiros)
+		campus1=simplejson.dumps(campus1)
+		carrera1=simplejson.dumps(carrera1)
+		#periodo=simplejson.dumps(periodo)
+		#'periodo': periodo,
+		
+			
+		
+		
+		datos3 = estudiantesresumen.objects.all()
+		inscritos = []
+		prematriculados = []
+		matriculados=[]
+		campus=[]
+		carrera=[]
+		#periodo=[]
+		t = 0
+		
+		for item in datos3:
+			inscritos.append(item.est_inscritos)
+			prematriculados.append(item.est_prematriculados)
+			matriculados.append(item.est_matriculados)
+			campus.append(model_to_dict(item.id_campus))
+			carrera.append(model_to_dict(item.id_carrera))
+			#periodo.append(model_to_dict(item.id_periodo))
+            #campus.append(item.id_campus)
+            #carrera.append(item.id_carrera)
+            #periodo.append(item.id_periodo)
+			t +=1
+			
+		inscritos=simplejson.dumps(inscritos)
+		prematriculados=simplejson.dumps(prematriculados)
+		matriculados=simplejson.dumps(matriculados)
+		campus=simplejson.dumps(campus)
+		carrera=simplejson.dumps(carrera)
+		#periodo=simplejson.dumps(periodo)
+		#'periodo': periodo,
+		info={
+			'aprobados':aprobados,
+            'reprobados':reprobados,
+            'anulados':anulados,
+			'retiros':retiros,
+            'campus1':campus1,
+            'carrera1': carrera1,
+            'datos1': datos1,
+            'i':i,
+            #'fecha':fecha,
+            'inscritos':inscritos,
+            'prematriculados':prematriculados,
+            'matriculados':matriculados,
+            'campus':campus,
+            'carrera': carrera,
+            'datos3': datos3,
+            't':t
+        }
+		
+		return info
+		
+			
+
+		
 from django.contrib.auth.views import LoginView
 
 class InicioView(TemplateView):
@@ -133,8 +233,58 @@ class CampusVista (generic.ListView):
     def get_queryset(self):
         queryset = campus.objects.all()
         return queryset
-   
 
+
+class Resumen_Estudiantes_Vista (generic.ListView):
+    #model= estudiantesresumen
+    #template_name = 'perfiles/estudiantesresumen_list.html'   
+    
+    def get_queryset(self):
+        queryset = estudiantesresumen.objects.all()
+        return queryset
+    
+
+def index(request):
+        datos = estudiantesresumen.objects.all()
+        #datos_dict=model_to_dict(datos)
+        inscritos = []
+        prematriculados = []
+        matriculados=[]
+        campus=[]
+        carrera=[]
+        periodo=[]
+        i = 0
+        for item in datos:
+            inscritos.append(item.est_inscritos)
+            prematriculados.append(item.est_prematriculados)
+            matriculados.append(item.est_matriculados)
+            campus.append(model_to_dict(item.id_campus))
+            carrera.append(model_to_dict(item.id_carrera))
+            periodo.append(model_to_dict(item.id_periodo))
+            #campus.append(item.id_campus)
+            #carrera.append(item.id_carrera)
+            #periodo.append(item.id_periodo)
+            i +=1
+    
+        inscritos=simplejson.dumps(inscritos)
+        prematriculados=simplejson.dumps(prematriculados)
+        matriculados=simplejson.dumps(matriculados)
+        campus=simplejson.dumps(campus)
+        carrera=simplejson.dumps(carrera)
+        periodo=simplejson.dumps(periodo)
+        #fecha= date.today()
+        context={
+            #'fecha':fecha,
+            'inscritos':inscritos,
+            'prematriculados':prematriculados,
+            'matriculados':matriculados,
+            'campus':campus,
+            'carrera': carrera,
+            'periodo': periodo,
+            'datos': datos,
+            'i':i
+        }
+        return render_to_response('perfiles/estudiantesresumen_list.html',context)
     
     
     

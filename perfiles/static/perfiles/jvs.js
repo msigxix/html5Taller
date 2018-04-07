@@ -5,6 +5,7 @@ var chart_c;
 $(function() 
   {
     actualizar_cuadros("El Vecino");
+		
 	document.getElementById('addData').addEventListener('click', function() {
 			if (datos_c.length > 0) {
 				var month = "Columna " + (datos_c.length + 1);
@@ -34,16 +35,16 @@ function mostrar_video(path_video){
 	})
 }
 
-function pintar_cuadro1(labelGraf3,datos3,titulo3){
+function pintar_cuadro1(labelGraf3,apro,repr,anul,reti,titulo3){
 	
 	new Chart(document.getElementById("doughnut-chart"), {
                 type: 'doughnut',
                 data: {
                     labels: labelGraf3,
                     datasets: [{
-                        label: "Estadisticas",
+                        label: "Aprobados",
                         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        data: datos3
+                        data: apro
                     }]
                 },
                 options: {
@@ -55,36 +56,44 @@ function pintar_cuadro1(labelGraf3,datos3,titulo3){
             });
 }
 
-function pintar_cuadro2(labelGraf3,datos3,titulo3)
+function pintar_cuadro2(labelGraf3,matri1,inscri1,prem1,titulo3)
 {
-	 
-     
-            var ctx = document.getElementById("myChart").getContext('2d');
+	        var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels:labelGraf3,
                     datasets: [{
-                        label: titulo3,
-                        data: datos3,
+                        label: "Matriculados",
+                        data: matri1,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(255, 99, 132, 1)'],
+						borderColor:[
+                            'rgba(255, 99, 132, 1)'
+                        ] ,
+                        borderWidth: 1
+                    },
+					{	
+						label: "Inscritos",
+                        data: inscri1,
+                        backgroundColor: [                           
+                            'rgba(54, 162, 235, 1)'],
+						borderColor: [                           
+                            'rgba(54, 162, 235, 1)'],
+                        borderWidth: 1
+					},
+					{
+						label: "Prematriculados",
+                        data: prem1,
+                        backgroundColor: [
+                            'rgba(255, 206, 86, 1)'
                         ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+						borderColor: [
+                            'rgba(255, 206, 86, 1)'
                         ],
                         borderWidth: 1
-                    }]
+					}
+					]
                 },
                 options: {
                     scales: {
@@ -99,20 +108,26 @@ function pintar_cuadro2(labelGraf3,datos3,titulo3)
 			chart_c=myChart;
 }
 
+
 function actualizar_cuadros(cuadro)
 {
 			var pathVideo;
 			var labelGraf;
+			var labelGraf1;
 			var datos;
 			var datos1;
 			var titulo;
+			var titulo1;
+			var locacion;
 			
 			if (cuadro=="El Vecino") {
                     pathVideo = "static/perfiles/videos/Vecino.mp4";
                     labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
                     datos     = [2478, 5267, 734, 784];
 					datos1     = [5247, 3247, 1784, 2484];
-                    titulo    = 'Estadisticas Malecon 2000 en el año 2018';
+                    titulo    = 'UPS Cuenca - Campus El Vecino';
+					titulo1 = 'UPS Cuenca - Campus El Vecino'
+					locacion = 'El Vecino';
 
                    // alert(pathVideo);                  
                    }else if  (cuadro=="El Giron"){
@@ -120,7 +135,9 @@ function actualizar_cuadros(cuadro)
                     labelGraf = ["Hab. Simples", "Hab. Dobles", "Vista al Rio", "Internas"];
                     datos     = [400, 200,120, 200];
 					datos1     = [300, 250,180, 220];
-                    titulo    = 'Habitaciones en Hotel Wyndham'; 
+                    titulo    = '';
+					titulo1    = '';
+					locacion = 'El Giron';
                     //alert(pathVideo);                
                    
                   }else if  (cuadro== "Sur"){
@@ -128,7 +145,9 @@ function actualizar_cuadros(cuadro)
                     labelGraf = ["Arte", "Cultura", "Antiguedades"];
                     datos     = [2000, 5267, 734];
 					datos1     = [1300, 2467, 1534];
-                    titulo    = 'Estadisticas de las Visitas en el Museo General de Guayaquil'; 
+                    titulo    = 'UPS';
+					titulo1    = 'UPS';
+					locacion = 'Sur';
                     //alert(pathVideo);  
                    }else if (cuadro=="Centenario") {
                     pathVideo =  "static/perfiles/videos/Centenario.mp4";
@@ -136,17 +155,57 @@ function actualizar_cuadros(cuadro)
                     datos     = [5000, 1000, 500, 400];
 					datos1     = [3000, 1500, 800, 2450];
                     titulo    = 'Número de Estudiantes en la ESPOL año 2018';
-
-                    //alert(pathVideo);  
-
+					titulo1='UPS Guayaquil - Campus Centenario'
+					locacion = 'Centenario';
        }
 	   else
 	   {
                         pathVideo =  " ";
        }
+	   var j=0;
+	   var dat_mat=[];
+	   var dat_ins=[];
+	   var dat_pre=[];
+	   
+	   
+	   labelGraf1=[];
+	   for (i=0;i<campus.length;i++) {
+		   if (campus[i]["cam_nombre"]==locacion)
+		   {
+			    dat_mat.push(matriculados[j]);
+				dat_ins.push(inscritos[j]);
+				dat_pre.push(prematriculados[j]);
+				labelGraf1.push(carrera2[j]["car_nombre"]);
+				j++;
+		   }
+		}
+	   alert(dat_mat);
+	   j=0;
+	   var dat_apro=[];
+	   var dat_rep=[];
+	   var dat_anu=[];
+	   var dat_ret=[];
+	   
+	   
+	   labelGraf=[];
+	   for (i=0;i<campus1.length;i++) {
+		   if (campus1[i]["cam_nombre"]==locacion)
+		   {
+			    dat_apro.push(aprobadas[j]);
+				dat_rep.push(reprobados[j]);
+				dat_anu.push(anulados[j]);
+				dat_ret.push(retiros[j]);
+				labelGraf.push(carrera1[j]["car_nombre"]);
+				j++;
+		   }
+		}
+	   
+	   
+	   
+	   
 	   mostrar_video(pathVideo);
-	   pintar_cuadro1(labelGraf,datos,titulo);
-	   pintar_cuadro2(labelGraf,datos1,titulo);	
+	   pintar_cuadro1(labelGraf,dat_apro,dat_rep,dat_anu,dat_ret,'Rendimiento académico');
+	   pintar_cuadro2(labelGraf1,dat_mat,dat_ins,dat_pre,'Estudiantes por Carrera');	
 	   datos_c=datos1;
 	   datos_l=labelGraf;
 }

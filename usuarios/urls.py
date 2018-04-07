@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-from perfiles.views import SignUpView, BienvenidaView, InicioView, SignInView, SignOutView , CampusVista, campus_view, carreras_view, periodoslectivos_view, estudiantesresumen_view, asignaturasresumen_view
+from perfiles.views import SignUpView, BienvenidaView, InicioView, SignInView, SignOutView , CampusVista, campus_view, carreras_view, periodoslectivos_view, estudiantesresumen_view, asignaturasresumen_view, Resumen_Estudiantes_Vista, index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -39,6 +39,8 @@ urlpatterns = [
     url(r'^cerrar-sesion/$', SignOutView.as_view(), name='sign_out'),
     url(r'^campus-form/$', login_required(campus_view), name='campus_crear'),
     url(r'^campus-list/$', login_required(CampusVista.as_view()), name='campus_ver'),
+    #url(r'^estudiantesresumen-list/$', Resumen_Estudiantes_Vista.as_view(), name='estudiantesresumen_ver'),
+    url(r'^estudiantesresumen-list/$',index, name='estudiantesresumen_ver'),
     url(r'^carreras-form/$', login_required(carreras_view), name='carreras_crear'),
     url(r'^periodoslectivos-form/$', login_required(periodoslectivos_view), name='periodoslectivos_crear'),
     url(r'^estudiantesresumen-form/$', login_required(estudiantesresumen_view), name='estudiantesresumen_crear'),
