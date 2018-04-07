@@ -78,6 +78,13 @@ class estudiantesresumen (models.Model):
     id_campus = models.ForeignKey(campus, on_delete=models.CASCADE)
     id_carrera = models.ForeignKey(carreras, on_delete=models.CASCADE)
     id_periodo = models.ForeignKey(periodoslectivos, on_delete=models.CASCADE)
+ 
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return self.est_inscritos, self.est_prematriculados, self.est_matriculados, self.id_campus, self.id_carrera, self.id_periodo
+        #return self.est_inscritos, self.est_prematriculados, self.est_matriculados, self.id_carrera, self.id_periodo
     
 class asignaturasresumen (models.Model):
     id_asignaturar = models.AutoField(primary_key=True)
@@ -94,7 +101,8 @@ class consultatablas(models.Manager):
         from django.db import connection
         with connection.cursor() as cursor:
             cursor.execute("""
-                Select cam_nombre campus,car_nombre carrera,per_descripcion periodo, est_inscritos inscritos, est_prematriculados prematriculados, est_matriculados matriculados from perfiles_campus, perfiles_carreras, perfiles_periodoslectivos, perfiles_estudiantesresumen where id_campus = id_campus_id and id_periodo = id_periodo_id and id_carrera = id_carrera_id and id_periodo = id_periodo_id""")
+                Select cam_nombre campus,car_nombre carrera,per_descripcion periodo, est_inscritos inscritos, est_prematriculados prematriculados, est_matriculados matriculados from perfiles_campus tcam, perfiles_carreras tcar, perfiles_periodoslectivos tpl, perfiles_estudiantesresumen tper where tcam.id_campus = tper.id_campus_id and tpl.id_periodo = tper.id_periodo_id and tcar.id_carrera = tper.id_carrera_id
+                """)
             result_list = []
             for row in cursor.fetchall():
                 p = self.model(campus=row[0], carrera=row[1], periodo=row[2])
@@ -102,15 +110,9 @@ class consultatablas(models.Manager):
                 result_list.append(p)
         return result_list
     
-from django.db import connection
 
-def my_sql(self):
-    with connection.cursor() as cursor:
-        cursor.execute("UPDATE bar SET foo = 1 WHERE baz = %s", [self.baz])
-        cursor.execute("SELECT foo FROM bar WHERE baz = %s", [self.baz])
-        row = cursor.fetchone()
 
-    return row    
+
     
     
     
