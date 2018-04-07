@@ -4,7 +4,7 @@ var chart_c;
 
 $(function() 
   {
-    //actualizar_cuadros("El Vecino");
+    actualizar_cuadros("El Vecino");
 		
 	document.getElementById('addData').addEventListener('click', function() {
 			if (datos_c.length > 0) {
@@ -56,7 +56,7 @@ function pintar_cuadro1(labelGraf3,datos3,titulo3){
             });
 }
 
-function pintar_cuadro2(labelGraf3,datos3,titulo3)
+function pintar_cuadro2(labelGraf3,matri1,inscri1,prem1,titulo3)
 {
 	        var ctx = document.getElementById("myChart").getContext('2d');
             var myChart = new Chart(ctx, {
@@ -64,26 +64,36 @@ function pintar_cuadro2(labelGraf3,datos3,titulo3)
                 data: {
                     labels:labelGraf3,
                     datasets: [{
-                        label: titulo3,
-                        data: datos3,
+                        label: "Matriculados",
+                        data: matri1,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(255, 99, 132, 1)'],
+						borderColor:[
+                            'rgba(255, 99, 132, 1)'
+                        ] ,
+                        borderWidth: 1
+                    },
+					{	
+						label: "Inscritos",
+                        data: inscri1,
+                        backgroundColor: [                           
+                            'rgba(54, 162, 235, 1)'],
+						borderColor: [                           
+                            'rgba(54, 162, 235, 1)'],
+                        borderWidth: 1
+					},
+					{
+						label: "Prematriculados",
+                        data: prem1,
+                        backgroundColor: [
+                            'rgba(255, 206, 86, 1)'
                         ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+						borderColor: [
+                            'rgba(255, 206, 86, 1)'
                         ],
                         borderWidth: 1
-                    }]
+					}
+					]
                 },
                 options: {
                     scales: {
@@ -114,7 +124,7 @@ function actualizar_cuadros(cuadro)
                     pathVideo = "static/perfiles/videos/Vecino.mp4";
                     labelGraf = ["Visitas", "Diversiones", "Gastronomia", "Cines"];
                     datos     = [2478, 5267, 734, 784];
-					//datos1     = [5247, 3247, 1784, 2484];
+					datos1     = [5247, 3247, 1784, 2484];
                     titulo    = 'Estadisticas Malecon 2000 en el año 2018';
 					titulo1 = 'UPS Cuenca - Campus El Vecino'
 					locacion = 'Cuenca';
@@ -139,7 +149,7 @@ function actualizar_cuadros(cuadro)
                     pathVideo =  "static/perfiles/videos/Centenario.mp4";
                     labelGraf = ["Grado", "Posgrado", "Formación Continua", "Cisco"];
                     datos     = [5000, 1000, 500, 400];
-					//datos1     = [3000, 1500, 800, 2450];
+					datos1     = [3000, 1500, 800, 2450];
                     titulo    = 'Número de Estudiantes en la ESPOL año 2018';
 					titulo1='UPS Guayaquil - Campus Centenario'
        }
@@ -148,12 +158,18 @@ function actualizar_cuadros(cuadro)
                         pathVideo =  " ";
        }
 	   var j=0;
-	   datos1=[];
+	   var dat_mat=[];
+	   var dat_ins=[];
+	   var dat_pre=[];
+	   
+	   
 	   labelGraf1=[];
 	   for (i=0;i<campus.length;i++) {
 		   if (campus[i]["cam_nombre"]==locacion)
 		   {
-				datos1.push(matriculados[j]["est_matriculados"]);
+			    dat_mat.push(matriculados[j]["est_matriculados"]);
+				dat_ins.push(matriculados[j]["est_inscritos"]);
+				dat_pre.push(matriculados[j]["est_prematriculados"]);
 				labelGraf1.push(carrera2[j]["car_nombre"]);
 				j++;
 		   }
@@ -163,7 +179,7 @@ function actualizar_cuadros(cuadro)
 	   
 	   mostrar_video(pathVideo);
 	   pintar_cuadro1(labelGraf,datos,titulo);
-	   pintar_cuadro2(labelGraf1,datos1,titulo1);	
+	   pintar_cuadro2(labelGraf1,dat_mat,dat_ins,dat_pre,titulo1);	
 	   datos_c=datos1;
 	   datos_l=labelGraf;
 }
