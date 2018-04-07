@@ -49,14 +49,49 @@ class BienvenidaView(TemplateView):
 
 	def get_context_data(self, **kwargs):
 		context = super(BienvenidaView, self).get_context_data(**kwargs)
-		context['cuadro1_info'] = self.cuadro1_informacion()
+		context = self.cuadro2_informacion()
 		return context
 
-	def cuadro1_informacion(self):
-		info = []
-		temp1 = estudiantesresumen.objects.all()
-		for item in temp1:
-			info.append([item.est_inscritos,item.est_prematriculados,item.est_matriculados,item.id_carrera,item.id_carrera.id_campus,item.id_periodo])
+	def cuadro2_informacion(self):
+		datos = estudiantesresumen.objects.all()
+		inscritos = []
+		prematriculados = []
+		matriculados=[]
+		campus=[]
+		carrera=[]
+		#periodo=[]
+		i = 0
+		
+		for item in datos:
+			inscritos.append(item.est_inscritos)
+			prematriculados.append(item.est_prematriculados)
+			matriculados.append(item.est_matriculados)
+			campus.append(model_to_dict(item.id_campus))
+			carrera.append(model_to_dict(item.id_carrera))
+			#periodo.append(model_to_dict(item.id_periodo))
+            #campus.append(item.id_campus)
+            #carrera.append(item.id_carrera)
+            #periodo.append(item.id_periodo)
+			i +=1
+			
+		inscritos=simplejson.dumps(inscritos)
+		prematriculados=simplejson.dumps(prematriculados)
+		matriculados=simplejson.dumps(matriculados)
+		campus=simplejson.dumps(campus)
+		carrera=simplejson.dumps(carrera)
+		#periodo=simplejson.dumps(periodo)
+		#'periodo': periodo,
+		info={
+            #'fecha':fecha,
+            'inscritos':inscritos,
+            'prematriculados':prematriculados,
+            'matriculados':matriculados,
+            'campus':campus,
+            'carrera': carrera,
+            'datos': datos,
+            'i':i
+        }
+		
 		return info
    
 from django.contrib.auth.views import LoginView
