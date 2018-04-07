@@ -1,25 +1,24 @@
 var datos_c;
 var datos_l;
 var chart_c;
+var chart_c1;
 
 $(function() 
   {
     actualizar_cuadros("El Vecino");
 		
-	document.getElementById('addData').addEventListener('click', function() {
-			if (datos_c.length > 0) {
-				var month = "Columna " + (datos_c.length + 1);
-				datos_l.push(month);
-				datos_c.push(800);
-				chart_c.update();
-			}
-		});
-		
-		document.getElementById('removeData').addEventListener('click', function() {
-			datos_l.splice(-1, 1); // remove the label first
-			datos_c.pop();
-		
+    document.getElementById('removeData').addEventListener('click', function() {
+		/*	datos_l.splice(-1, 1); // remove the label first
+			datos_c.pop();*/
+			chart_c.data.datasets.splice(0, 1);
 			chart_c.update();
+		});
+
+		document.getElementById('removeData1').addEventListener('click', function() {
+		/*	datos_l.splice(-1, 1); // remove the label first
+			datos_c.pop();*/
+			chart_c1.data.datasets.splice(0, 1);
+			chart_c1.update();
 		});		
   });
 		
@@ -37,15 +36,25 @@ function mostrar_video(path_video){
 
 function pintar_cuadro1(labelGraf3,apro,repr,anul,reti,titulo3){
 	
-	new Chart(document.getElementById("doughnut-chart"), {
+	chart_c1=new Chart(document.getElementById("doughnut-chart"), {
                 type: 'doughnut',
                 data: {
                     labels: labelGraf3,
                     datasets: [{
                         label: "Aprobados",
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                        backgroundColor: ["red", "#8e5ea2", "yellow", "#e8c3b9", "#c45850"],
                         data: apro
-                    }]
+                    },
+					{label: "Reprobados",
+                        backgroundColor: ["red", "#8e5ea2", "yellow", "#e8c3b9", "#c45850"],
+                        data: repr},
+					{label: "Anulados",
+                        backgroundColor: ["red", "#8a5da2", "yellow", "#e8c3b9", "#c45850"],
+                        data: anul},
+					{label: "Retirados",
+                        backgroundColor: ["red", "#8a5da2", "yellow", "#e8c3b9", "#c45850"],
+                        data: reti
+					}]
                 },
                 options: {
                     title: {
@@ -54,7 +63,9 @@ function pintar_cuadro1(labelGraf3,apro,repr,anul,reti,titulo3){
                     }
                 }
             });
+			
 }
+
 
 function pintar_cuadro2(labelGraf3,matri1,inscri1,prem1,titulo3)
 {
