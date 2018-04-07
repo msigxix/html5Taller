@@ -179,7 +179,7 @@ function actualizar_cuadros(cuadro)
 				j++;
 		   }
 		}
-	   alert(dat_mat);
+	   //alert(dat_mat);
 	   j=0;
 	   var dat_apro=[];
 	   var dat_rep=[];
