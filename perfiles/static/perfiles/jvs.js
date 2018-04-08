@@ -77,31 +77,22 @@ function pintar_cuadro2(labelGraf3,matri1,inscri1,prem1,titulo3)
                     datasets: [{
                         label: "Matriculados",
                         data: matri1,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 1)'],
-						borderColor:[
-                            'rgba(255, 99, 132, 1)'
-                        ] ,
+                        backgroundColor: ['rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)'],
+						borderColor:['rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)','rgba(255, 99, 132, 1)'] ,
                         borderWidth: 1
                     },
 					{	
 						label: "Inscritos",
                         data: inscri1,
-                        backgroundColor: [                           
-                            'rgba(54, 162, 235, 1)'],
-						borderColor: [                           
-                            'rgba(54, 162, 235, 1)'],
+						backgroundColor: ['rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)'],
+						borderColor:['rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)','rgba(54, 162, 235, 1)'],
                         borderWidth: 1
 					},
 					{
 						label: "Prematriculados",
                         data: prem1,
-                        backgroundColor: [
-                            'rgba(255, 206, 86, 1)'
-                        ],
-						borderColor: [
-                            'rgba(255, 206, 86, 1)'
-                        ],
+						backgroundColor: ['rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)'],
+						borderColor:['rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)','rgba(255, 206, 86, 1)'],
                         borderWidth: 1
 					}
 					]
