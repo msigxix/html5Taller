@@ -11,6 +11,7 @@ $(function()
 		/*	datos_l.splice(-1, 1); // remove the label first
 			datos_c.pop();*/
 			chart_c.data.datasets.splice(0, 1);
+			
 			chart_c.update();
 		});
 
@@ -18,6 +19,7 @@ $(function()
 		/*	datos_l.splice(-1, 1); // remove the label first
 			datos_c.pop();*/
 			chart_c1.data.datasets.splice(0, 1);
+			
 			chart_c1.update();
 		});		
   });
@@ -37,31 +39,39 @@ function mostrar_video(path_video){
 function pintar_cuadro1(labelGraf3,apro,repr,anul,reti,titulo3){
 	
 	chart_c1=new Chart(document.getElementById("doughnut-chart"), {
-                type: 'doughnut',
+                type: 'radar',
                 data: {
                     labels: labelGraf3,
                     datasets: [{
                         label: "Aprobados",
-                        backgroundColor: ["red", "#8e5ea2", "yellow", "#e8c3b9", "#c45850"],
+                        borderColor: ["red"],//, "#8e5ea2", "yellow", "#e8c3b9", "#c45850"
+						fill: false,
                         data: apro
                     },
 					{label: "Reprobados",
-                        backgroundColor: ["red", "#8e5ea2", "yellow", "#e8c3b9", "#c45850"],
+                        borderColor: ["#8e5ea2"],//, , "yellow", "#e8c3b9", "#c45850"],
+						fill: false,
                         data: repr},
 					{label: "Anulados",
-                        backgroundColor: ["red", "#8a5da2", "yellow", "#e8c3b9", "#c45850"],
+                        borderColor: ["yellow"],//, "#8a5da2", , "#e8c3b9", "#c45850"],
+						fill: false,
                         data: anul},
 					{label: "Retirados",
-                        backgroundColor: ["red", "#8a5da2", "yellow", "#e8c3b9", "#c45850"],
+                        borderColor: ["#e8c3b9"],//, "#8a5da2", "yellow", , "#c45850"],
+						fill: false,
                         data: reti
 					}]
                 },
-                options: {
-                    title: {
-                        display: true,
-                        text: titulo3
-                    }
-                }
+               options: {
+					legend: {
+						position: 'top',
+					},
+					scale: {
+						ticks: {
+							beginAtZero: true
+						}
+					}
+				}
             });
 			
 }
@@ -103,8 +113,19 @@ function pintar_cuadro2(labelGraf3,matri1,inscri1,prem1,titulo3)
                             ticks: {
                                 beginAtZero: true
                             }
-                        }]
+                        }],
+						xAxes: [
+						{
+							ticks: {
+								autoSkip: false,
+								maxRotation: 45,
+								minRotation: 45,
+								fontSize:6
+							}
+						}
+						]
                     }
+					
                 }
             });
 			chart_c=myChart;
@@ -174,10 +195,10 @@ function actualizar_cuadros(cuadro)
 	   for (i=0;i<campus.length;i++) {
 		   if (campus[i]["cam_nombre"]==locacion)
 		   {
-			    dat_mat.push(matriculados[j]);
-				dat_ins.push(inscritos[j]);
-				dat_pre.push(prematriculados[j]);
-				labelGraf1.push(carrera2[j]["car_nombre"]);
+			    dat_mat.push(matriculados[i]);
+				dat_ins.push(inscritos[i]);
+				dat_pre.push(prematriculados[i]);
+				labelGraf1.push(carrera2[i]["car_nombre"]);
 				j++;
 		   }
 		}
@@ -193,15 +214,14 @@ function actualizar_cuadros(cuadro)
 	   for (i=0;i<campus1.length;i++) {
 		   if (campus1[i]["cam_nombre"]==locacion)
 		   {
-			    dat_apro.push(aprobadas[j]);
-				dat_rep.push(reprobados[j]);
-				dat_anu.push(anulados[j]);
-				dat_ret.push(retiros[j]);
-				labelGraf.push(carrera1[j]["car_nombre"]);
+			    dat_apro.push(aprobadas[i]);
+				dat_rep.push(reprobados[i]);
+				dat_anu.push(anulados[i]);
+				dat_ret.push(retiros[i]);
+				labelGraf.push(carrera1[i]["car_nombre"]);
 				j++;
 		   }
 		}
-	   
 	   
 	   
 	   
