@@ -109,12 +109,11 @@
 
 </head>
 
-<body class="landing" style="height:100%;" >
+<body class="landing"  >
 
+ <div id="page-wrapper"  style="height:100%;" >
 
-    {% if user.is_authenticated %}
-
-    <div id="page-wrapper" style="height:100%;">
+      {% if user.is_authenticated %}
 
         <!-- Header -->
         <header id="header" class="alt">
@@ -153,14 +152,21 @@
                 </ul>
             </nav>
         </header>
-        <section id="banner">
-					
-		</section>
-    <section id="main" class="container" style="height:100%;">
-    <div class="row" style="height:100%;">
+  
+        <section id="banner"></section>
+
+
+
+    <!--section id="main" class="container" style="height:100%;">
+    <div class="row" style="height:100%;"-->
+
+        <!--/div>
+    </section-->
+
+
     {% else %}
 
-    <div id="page-wrapper" style="height:100%;">
+    <!--div id="page-wrapper" style="height:100%;"-->
 	
         <!-- Header -->
         <header id="header" class="alt">
@@ -194,22 +200,34 @@
                 </ul>
             </nav>
         </header>
-       <section id="banner">
-					
-		</section>
-        <section id="main" class="container" style="height:100%;">
-        <div class="row" style="height:100%;">
-        
-   
-    
-		    {% endif %} 
-		    {% block content %}
-		     
-		    {% endblock content %}
-			</div>
+       
+       <section id="banner"></section>
+       {% endif %} 
+      
+        <section id="main" class="container"  style="height:100%;"   >
+                {% block content %}  
+                <!--div class="row" style="height:100%;"> </div-->
+                {% endblock content %}
+
+
+                <footer id="footer" >
+                        <ul class="icons">
+                            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+                            <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+                            <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+                        </ul>
+                        <ul class="copyright">
+                            <li>&copy; Untitled. All rights reserved.</li>
+                            <li>Design: <a href="#">HTML5 - Django</a></li>
+                        </ul>
+                    </footer>   
         </section>
-        <!-- 
-    <footer id="footer">
+        
+      
+    <!--footer id="footer" >
         <ul class="icons">
             <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
             <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -222,12 +240,12 @@
             <li>&copy; Untitled. All rights reserved.</li>
             <li>Design: <a href="#">HTML5 - Django</a></li>
         </ul>
-    </footer>
- -->
+    </footer-->
+ 
  </div>
     
     
-    {% load static %}
+   
     <!-- 
 	<script>
 		$(function() {
