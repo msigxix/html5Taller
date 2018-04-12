@@ -83,7 +83,6 @@
 
 	.container {
 		width: 60em;
-		height: 100% ;
 	}
 
 	@media screen and (max-width: 1680px) {
@@ -3036,7 +3035,7 @@
 		background-repeat: repeat,							no-repeat;
 		background-size: auto,							cover;
 		color: #fff;
-		padding: 12em 0 20em 0;
+		padding: 0em 0 15em 0;
 		text-align: center;
 	}
 
@@ -3247,7 +3246,7 @@
 		/* Banner */
 
 			#banner {
-				padding: 10em 0 18em 0;
+				padding: 0em 0 15em 0;
 			}
 
 	}
@@ -3694,7 +3693,7 @@
 						width: 100%;
 						margin: 0 !important;
 					}
-
+z
 						ul.actions li > *.icon:before {
 							margin-left: -2em;
 						}
